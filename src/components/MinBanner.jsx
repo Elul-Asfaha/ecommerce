@@ -1,4 +1,4 @@
-import { FiChevronDown } from "react-icons/fi";
+import ReactIcons from "./ReactIconsImport";
 const MinBanner = () => {
     return (
         <div className='sm:flex hidden justify-between px-[5%] py-2 bg-green-900 text-white'>
@@ -13,11 +13,11 @@ const MinBanner = () => {
             <div className='flex gap-5 capitalize'>
                 <div className='flex justify-center items-center gap-1'>
                     <div>eng</div>
-                    <FiChevronDown />
+                    <ReactIcons.FiChevronDown />
                 </div>
                 <div className='flex justify-center items-center gap-1'>
                     <div>language</div>
-                    <FiChevronDown />
+                    <ReactIcons.FiChevronDown />
                 </div>
             </div>
         </div>

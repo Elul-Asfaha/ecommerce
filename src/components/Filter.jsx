@@ -1,64 +1,37 @@
-import { FiChevronDown } from "react-icons/fi";
-import { FiFilter } from "react-icons/fi";
-
 const Filter = () => {
     return (
         <div className='flex flex-col md:flex-row justify-between py-5 px-[5%] gap-1'>
-            <div className='flex flex-wrap gap-1 lg:gap-2'>
+            <div className='flex flex-wrap gap-2 lg:gap-2'>
                 <select className='flex  border border-black  rounded-full px-3  gap-2'>
-                    <option>
-                        headphone type
-                        <FiChevronDown />
-                    </option>
+                    <option value=''>headphone type</option>
                 </select>
 
                 <select className='flex  border border-black  rounded-full px-3  gap-2'>
-                    <option>
-                        price
-                        <FiChevronDown />
-                    </option>
+                    <option value=''>price</option>
                 </select>
 
                 <select className='flex  border border-black  rounded-full px-3  gap-2'>
-                    <option>
-                        review
-                        <FiChevronDown />
-                    </option>
+                    <option value=''>review</option>
                 </select>
 
                 <select className='flex  border border-black  rounded-full gap-2'>
-                    <option className=' px-3'>
-                        <div>
-                            color
-                            <FiChevronDown />
-                        </div>
-                    </option>
+                    <option className=' px-3'>color</option>
                 </select>
 
                 <select className='flex  border border-black  rounded-full px-3  gap-2'>
-                    <option>
-                        material
-                        <FiChevronDown />
-                    </option>
+                    <option value=''>material</option>
                 </select>
 
                 <select className='flex  border border-black  rounded-full px-3  gap-2'>
-                    <option>
-                        offer
-                        <FiChevronDown />
-                    </option>
+                    <option value=''>offer</option>
                 </select>
 
                 <select className='flex  border border-black  rounded-full px-3  gap-2'>
-                    <option>
-                        all filter
-                        <FiFilter />
-                    </option>
+                    <option value=''>all filter</option>
                 </select>
             </div>
             <select className='flex  border border-black w-fit rounded-full gap3 r2 px-2'>
-                <option>sort by</option>
-                <FiChevronDown />
+                <option value=''>sort by</option>
             </select>
         </div>
     );

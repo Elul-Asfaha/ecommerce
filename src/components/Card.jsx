@@ -1,40 +1,57 @@
-import { useState } from "react";
-import {
-    AiOutlineHeart,
-    AiFillHeart,
-    AiOutlineStar,
-    AiFillStar,
-} from "react-icons/ai";
-const Card = () => {
+import { useContext, useState } from "react";
+import ReactIcons from "./ReactIconsImport";
+import { ContextProvider } from "../App";
+const Card = (props) => {
+    const providedData = useContext(ContextProvider);
     const [toggleLike, setToggleLike] = useState(false);
+    //adds the data to the favorites array
+    const handleAddToFavorite = () => {
+        providedData.setFav((item) => [...item, props.id]);
+        setToggleLike(!toggleLike);
+    };
+
+    // filters out the data from the favorites array
+    const handleRemoveFromFavorite = () => {
+        const newFav = providedData.fav.filter((items) => items != props.id);
+        providedData.setFav(newFav);
+        setToggleLike(!toggleLike);
+    };
     return (
         <div className='flex flex-col gap-1 capitalize py-5 w-[311.47px]'>
-            <div className='relative flex w-[311.47px]  h-[200px] cursor-pointer'>
+            <div className='relative flex w-[311.47px] h-[200px] cursor-pointer'>
                 <img
                     src=''
                     alt=''
                     className='bg-gray-400 container rounded-lg'
                 />
                 <div
-                    className='absolute right-5 top-5 p-1 bg-white rounded-full text-xl'
-                    onClick={() => setToggleLike((item) => (item = !item))}
+                    className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl'
+                    onClick={
+                        !toggleLike
+                            ? () => handleAddToFavorite()
+                            : () => handleRemoveFromFavorite()
+                    }
                 >
-                    {!toggleLike ? <AiOutlineHeart /> : <AiFillHeart />}
+                    {!toggleLike ? (
+                        <ReactIcons.AiOutlineHeart />
+                    ) : (
+                        <ReactIcons.AiFillHeart />
+                    )}
                 </div>
             </div>
             <div className='flex flex-col gap-1'>
-                <div className='flex justify-between'>
+                <div className='flex justify-between font-bold'>
                     <p>wireless earbuds, ipx8</p>
                     <p>$ 89</p>
                 </div>
                 <p>wired sterio headset with mic</p>
                 <div className='flex items-center gap-1'>
                     <p className='flex'>
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiOutlineStar />
+                        <ReactIcons.AiFillStar />
+                        <ReactIcons.AiFillStar />
+                        <ReactIcons.AiFillStar />
+                        <ReactIcons.AiFillStar />
+                        <ReactIcons.AiOutlineStar />
                     </p>
                     <p>(120)</p>
                 </div>
