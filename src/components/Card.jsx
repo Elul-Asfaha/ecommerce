@@ -40,6 +40,7 @@ const Card = (props) => {
                     <img
                         src={props.image}
                         alt=''
+                        loading='lazy'
                         className='bg-gray-400 container rounded-lg'
                     />
                 </div>

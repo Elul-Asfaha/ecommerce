@@ -12,7 +12,12 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className='flex'>
-                    <img src='' alt='' className='container w-[300px]' />
+                    <img
+                        src=''
+                        alt=''
+                        loading='lazy'
+                        className='container w-[300px]'
+                    />
                 </div>
             </div>
         </div>

@@ -4,18 +4,22 @@ import Home from "./pages/Home.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BurgerMenu from "./components/BurgerMenu.jsx";
 import ecommerce from "./mockData/ecommerce.json";
+import CartModal from "./components/CartModal.jsx";
 export const ContextProvider = createContext();
 function App() {
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const [fav, setFav] = useState([]);
     const [burgerToggle, setBurgerToggle] = useState(false);
+    const [cartToggle, setCartToggle] = useState(false);
     const [cart, setCart] = useState([]);
     const [recentlyViewed, setRecentlyViewed] = useState([]);
     const handleBurgerToggler = () => {
         setBurgerToggle(!burgerToggle);
     };
     console.log(cart);
-
+    const handleCartToggler = () => {
+        setCartToggle(!cartToggle);
+    };
     return (
         <ContextProvider.Provider
             value={{
@@ -25,9 +29,11 @@ function App() {
                 handleBurgerToggler,
                 cart,
                 setCart,
+                setCartToggle,
                 ecommerce,
                 setRecentlyViewed,
                 recentlyViewed,
+                handleCartToggler,
             }}
         >
             <BrowserRouter>
@@ -36,6 +42,7 @@ function App() {
                     <Route path='/product/:id' element={<Product />} />
                 </Routes>
                 {burgerToggle && <BurgerMenu />}
+                {cartToggle && <CartModal />}
             </BrowserRouter>
         </ContextProvider.Provider>
     );

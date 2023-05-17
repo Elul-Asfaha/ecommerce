@@ -67,12 +67,16 @@ const Product = () => {
     return (
         <div>
             <Nav />
-            <div className='flex flex-col lg:grid mt-[2%] lg:grid-cols-2 gap-5 px-[5%]'>
+            <div
+                onClick={() => providedData.setCartToggle(false)}
+                className='flex flex-col lg:grid mt-[5%] md:mt-[2%] lg:grid-cols-2 gap-5 px-[5%]'
+            >
                 <div className='flex flex-col justify-center gap-3'>
                     <div className='flex max-h-[700px]'>
                         <img
                             src={details[0].image[0] && details[0].image[0]}
                             alt=''
+                            loading='lazy'
                             className='cover'
                         />
                     </div>
@@ -80,21 +84,25 @@ const Product = () => {
                         <img
                             src={details[0].image[1] && details[0].image[1]}
                             alt=''
+                            loading='lazy'
                             className='container flex-1'
                         />
                         <img
                             src={details[0].image[2] && details[0].image[2]}
                             alt=''
+                            loading='lazy'
                             className='cover'
                         />
                         <img
                             src={details[0].image[3] && details[0].image[3]}
                             alt=''
+                            loading='lazy'
                             className='cover'
                         />
                         <img
                             src={details[0].image[4] && details[0].image[4]}
                             alt=''
+                            loading='lazy'
                             className='cover'
                         />
                     </div>
@@ -102,7 +110,7 @@ const Product = () => {
                 <div className='flex flex-col my-5'>
                     <div className='flex flex-col gap-4 border-b py-5'>
                         <p className='text-4xl font-bold capitalize'>
-                            Airpods-Max
+                            {details[0].model_name && details[0].model_name}
                         </p>
                         <p className='max-w-[400px]'>
                             Lorem, ipsum dolor sit amet consectetur adipisicing

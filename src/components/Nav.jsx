@@ -8,21 +8,40 @@ const Nav = () => {
     return (
         <div className='flex items-center justify-between gap-5 capitalize px-[5%] pt-4'>
             <div className='flex-1 hidden md:flex items-center justify-between'>
-                <Link to='/' className='flex w-[50px]'>
+                <Link
+                    to='/'
+                    className='flex w-[50px]'
+                    onClick={() => providedData.setCartToggle(false)}
+                >
                     <img src={logo} alt='' className='cover' />
                 </Link>
-                <div>categories</div>
-                <div>deals</div>
-                <div className='capitalize'>what{"'s"} new</div>
-                <div className='flex items-center gap-2'>
+                <div onClick={() => providedData.setCartToggle(false)}>
+                    categories
+                </div>
+                <div onClick={() => providedData.setCartToggle(false)}>
+                    deals
+                </div>
+                <div
+                    onClick={() => providedData.setCartToggle(false)}
+                    className='capitalize'
+                >
+                    what{"'s"} new
+                </div>
+                <div
+                    onClick={() => providedData.setCartToggle(false)}
+                    className='flex items-center gap-2'
+                >
                     <div>delivery</div>
                     <ReactIcons.FiChevronDown />
                 </div>
             </div>
             <div className='flex-1 flex items-center justify-center md:justify-between'>
-                <div className='flex items-center bg-slate-200 rounded-full px-5 py-1'>
+                <div
+                    className='flex items-center bg-slate-200 rounded-full px-5 py-1'
+                    onClick={() => providedData.setCartToggle(false)}
+                >
                     <input
-                        type='search'
+                        type='text'
                         className='outline-none  bg-slate-200'
                         placeholder='search'
                     />
@@ -32,10 +51,13 @@ const Nav = () => {
                     <ReactIcons.AiOutlineUser />
                     <div>account</div>
                 </div>
-                <div className='hidden relative md:flex items-center gap-4'>
-                    <div className='relative'>
+                <div className='hidden relative md:flex items-center  gap-4'>
+                    <div
+                        className='relative cursor-pointer'
+                        onClick={providedData.handleCartToggler}
+                    >
                         <ReactIcons.AiOutlineShoppingCart className='text-4xl' />
-                        <div className='absolute bg-orange-300 text-center text-lg right-[-40%] top-[-30%] w-[30px] h-[30px] rounded-full '>
+                        <div className='absolute inset-y-0 -top-3 -right-3 bg-orange-300 text-center text-lg w-[30px] h-[30px] rounded-full '>
                             {providedData.cart.length}
                         </div>
                     </div>
