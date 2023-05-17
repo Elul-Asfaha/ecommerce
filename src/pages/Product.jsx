@@ -9,7 +9,6 @@ const Product = () => {
     const [color, setColor] = useState(1);
     const { id } = useParams(); // gets the product id from the card component
 
-    useEffect;
     const details = providedData.ecommerce.filter(
         (items) => items.id === Number(id)
     );
@@ -23,7 +22,7 @@ const Product = () => {
     };
     const handleAmountIncrease = () => {
         //increases the amount of items that are to be ordered
-        setAmount((item) => (item += 1));
+        amount < details[0].amount && setAmount((item) => (item += 1));
     };
     const handleBuyNow = () => {};
 
@@ -188,15 +187,17 @@ const Product = () => {
                                     -
                                 </button>
                             </div>
-                            <div>
-                                only{" "}
-                                <span className='text-orange-500'>
-                                    12 items
-                                </span>{" "}
-                                left!
-                                <br />
-                                dont miss it
-                            </div>
+                            {details[0].amount <= 20 && (
+                                <div>
+                                    only{" "}
+                                    <span className='text-orange-500'>
+                                        {details[0].amount} items
+                                    </span>{" "}
+                                    left!
+                                    <br />
+                                    dont miss it
+                                </div>
+                            )}
                         </div>
                         <div className='flex flex-col md:flex-row gap-4'>
                             <button

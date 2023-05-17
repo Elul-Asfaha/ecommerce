@@ -32,14 +32,14 @@ const Nav = () => {
                     <ReactIcons.AiOutlineUser />
                     <div>account</div>
                 </div>
-                <div className='hidden relative md:flex items-center gap-2'>
+                <div className='hidden relative md:flex items-center gap-4'>
                     <div className='relative'>
                         <ReactIcons.AiOutlineShoppingCart className='text-4xl' />
                         <div className='absolute bg-orange-300 text-center text-lg right-[-40%] top-[-30%] w-[30px] h-[30px] rounded-full '>
                             {providedData.cart.length}
                         </div>
                     </div>
-                    cart
+                    <p>cart</p>
                 </div>
             </div>
             <div
