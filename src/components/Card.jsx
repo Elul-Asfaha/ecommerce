@@ -27,7 +27,7 @@ const Card = (props) => {
 
     return (
         <div
-            className={`relative w-[360px] ${
+            className={`relative w-[330px] ${
                 props.changeWidthOfCard && " md:w-auto md:flex-1"
             } flex flex-col gap-1 capitalize`}
         >
