@@ -64,9 +64,16 @@ const CartModal = () => {
 
     return (
         <div className='flex bg-white shadow-xl py-5 fixed top-[5%] right-5 flex-col gap-5 w-[600px] rounded-xl'>
-            {providedData.cart && dispCartItems}
+            {providedData.cart.length != 0 ? (
+                dispCartItems
+            ) : (
+                <div className='flex items-center text-center justify-center h-[60px]'>
+                    <p className='font-bold'>Such empty? Much Wow!</p>
+                </div>
+            )}
             <Link
                 to='/cart'
+                onClick={() => providedData.setCartToggle(false)}
                 className='capitalize underline text-center font-bold'
             >
                 show all

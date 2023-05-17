@@ -70,7 +70,7 @@ const Card = (props) => {
             </button>
 
             <div
-                className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl'
+                className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl cursor-pointer hover:text-orange-500'
                 onClick={
                     !toggleLike
                         ? () => handleAddToFavorite()

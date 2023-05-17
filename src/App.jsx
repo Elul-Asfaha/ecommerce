@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BurgerMenu from "./components/BurgerMenu.jsx";
 import ecommerce from "./mockData/ecommerce.json";
 import CartModal from "./components/CartModal.jsx";
+import Cart from "./components/Cart.jsx";
 export const ContextProvider = createContext();
 function App() {
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -16,7 +17,6 @@ function App() {
     const handleBurgerToggler = () => {
         setBurgerToggle(!burgerToggle);
     };
-    console.log(cart);
     const handleCartToggler = () => {
         setCartToggle(!cartToggle);
     };
@@ -40,6 +40,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/product/:id' element={<Product />} />
+                    <Route path='/cart' element={<Cart />} />
                 </Routes>
                 {burgerToggle && <BurgerMenu />}
                 {cartToggle && <CartModal />}
