@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import ReactIcons from "./ReactIconsImport";
 import { ContextProvider } from "../App";
+import { Link } from "react-router-dom";
 const Card = (props) => {
     const providedData = useContext(ContextProvider);
     const [toggleLike, setToggleLike] = useState(false);
@@ -9,55 +10,77 @@ const Card = (props) => {
         providedData.setFav((item) => [...item, props.id]);
         setToggleLike(!toggleLike);
     };
-
     // filters out the data from the favorites array
     const handleRemoveFromFavorite = () => {
         const newFav = providedData.fav.filter((items) => items != props.id);
         providedData.setFav(newFav);
         setToggleLike(!toggleLike);
     };
+    const handleAddToCart = () => {
+        const addCart = {
+            Id: props.id,
+            Color: props.color,
+            Amount: 1,
+        };
+        providedData.setCart([...providedData.cart, addCart]);
+    };
+
     return (
-        <div className='flex flex-col gap-1 capitalize py-5 w-[311.47px]'>
-            <div className='relative flex w-[311.47px] h-[200px] cursor-pointer'>
-                <img
-                    src=''
-                    alt=''
-                    className='bg-gray-400 container rounded-lg'
-                />
+        <div
+            className={`relative w-[360px] ${
+                props.changeWidthOfCard && " md:w-auto md:flex-1"
+            } flex flex-col gap-1 capitalize`}
+        >
+            <Link to={`/product/${props.id}`}>
                 <div
-                    className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl'
-                    onClick={
-                        !toggleLike
-                            ? () => handleAddToFavorite()
-                            : () => handleRemoveFromFavorite()
-                    }
+                    className={`relative ${
+                        !props.changeWidthOfCard && "w-[311px]"
+                    } flex`}
                 >
-                    {!toggleLike ? (
-                        <ReactIcons.AiOutlineHeart />
-                    ) : (
-                        <ReactIcons.AiFillHeart />
-                    )}
+                    <img
+                        src={props.image}
+                        alt=''
+                        className='bg-gray-400 container rounded-lg'
+                    />
                 </div>
-            </div>
-            <div className='flex flex-col gap-1'>
-                <div className='flex justify-between font-bold'>
-                    <p>wireless earbuds, ipx8</p>
-                    <p>$ 89</p>
+                <div className='flex flex-col gap-1'>
+                    <div className='flex justify-between font-bold'>
+                        <p>wireless earbuds, ipx8</p>
+                        <p>$ {props.price}</p>
+                    </div>
+                    <p>wired sterio headset with mic</p>
+                    <div className='flex items-center gap-1'>
+                        <p className='flex'>
+                            <ReactIcons.AiFillStar />
+                            <ReactIcons.AiFillStar />
+                            <ReactIcons.AiFillStar />
+                            <ReactIcons.AiFillStar />
+                            <ReactIcons.AiOutlineStar />
+                        </p>
+                        <p>({props.reviews})</p>
+                    </div>
                 </div>
-                <p>wired sterio headset with mic</p>
-                <div className='flex items-center gap-1'>
-                    <p className='flex'>
-                        <ReactIcons.AiFillStar />
-                        <ReactIcons.AiFillStar />
-                        <ReactIcons.AiFillStar />
-                        <ReactIcons.AiFillStar />
-                        <ReactIcons.AiOutlineStar />
-                    </p>
-                    <p>(120)</p>
-                </div>
-                <button className='py-1 px-3 border hover:text-white border-none outline outline-1 outline-black hover:outline-green-700 active:outline-green-900  hover:bg-green-700 active:bg-green-900 border-black w-fit rounded-full'>
-                    add to cart
-                </button>
+            </Link>
+            <button
+                onClick={handleAddToCart}
+                className='py-1 px-3 border hover:text-white border-none outline outline-1 outline-black hover:outline-green-700 active:outline-green-900  hover:bg-green-700 active:bg-green-900 border-black w-fit rounded-full'
+            >
+                add to cart
+            </button>
+
+            <div
+                className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl'
+                onClick={
+                    !toggleLike
+                        ? () => handleAddToFavorite()
+                        : () => handleRemoveFromFavorite()
+                }
+            >
+                {!toggleLike ? (
+                    <ReactIcons.AiOutlineHeart />
+                ) : (
+                    <ReactIcons.AiFillHeart />
+                )}
             </div>
         </div>
     );

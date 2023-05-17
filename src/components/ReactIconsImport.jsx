@@ -6,10 +6,13 @@ import {
     AiOutlineSearch,
     AiOutlineShoppingCart,
     AiOutlineUser,
+    AiOutlineCalendar,
+    AiOutlineClose,
 } from "react-icons/ai";
-import { FiChevronDown, FiFilter } from "react-icons/fi";
 
+import { FiChevronDown, FiFilter } from "react-icons/fi";
 import { HiMenuAlt3 } from "react-icons/hi";
+import { BsTruck } from "react-icons/bs";
 const ReactIcons = {
     AiOutlineHeart: AiOutlineHeart,
     AiFillHeart: AiFillHeart,
@@ -21,5 +24,8 @@ const ReactIcons = {
     FiChevronDown: FiChevronDown,
     FiFilter: FiFilter,
     HiMenuAlt3: HiMenuAlt3,
+    BsTruck: BsTruck,
+    AiOutlineCalendar: AiOutlineCalendar,
+    AiOutlineClose: AiOutlineClose,
 };
 export default ReactIcons;

@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import logo from "../assets/logo.png";
 import ReactIcons from "./ReactIconsImport";
-
+import { Link } from "react-router-dom";
+import { ContextProvider } from "../App";
 const Nav = () => {
+    const providedData = useContext(ContextProvider);
     return (
         <div className='flex items-center justify-between gap-5 capitalize px-[5%] pt-4'>
             <div className='flex-1 hidden md:flex items-center justify-between'>
-                <div className='flex w-[50px]'>
+                <Link to='/' className='flex w-[50px]'>
                     <img src={logo} alt='' className='cover' />
-                </div>
+                </Link>
                 <div>categories</div>
                 <div>deals</div>
                 <div className='capitalize'>what{"'s"} new</div>
@@ -29,12 +32,20 @@ const Nav = () => {
                     <ReactIcons.AiOutlineUser />
                     <div>account</div>
                 </div>
-                <div className='hidden md:flex items-center gap-2'>
-                    <ReactIcons.AiOutlineShoppingCart className='text-xl' />
+                <div className='hidden relative md:flex items-center gap-2'>
+                    <div className='relative'>
+                        <ReactIcons.AiOutlineShoppingCart className='text-4xl' />
+                        <div className='absolute bg-orange-300 text-center text-lg right-[-40%] top-[-30%] w-[30px] h-[30px] rounded-full '>
+                            {providedData.cart.length}
+                        </div>
+                    </div>
                     cart
                 </div>
             </div>
-            <div className='flex absolute text-3xl right-[5%] md:hidden'>
+            <div
+                className='flex absolute text-3xl right-[5%] md:hidden'
+                onClick={providedData.handleBurgerToggler}
+            >
                 <ReactIcons.HiMenuAlt3 />
             </div>
         </div>
