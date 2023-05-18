@@ -8,6 +8,7 @@ import CartModal from "./components/CartModal.jsx";
 import Cart from "./components/Cart.jsx";
 export const ContextProvider = createContext();
 function App() {
+    const [paginationNumber, setPaginationNumber] = useState(1);
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const [fav, setFav] = useState([]);
     const [burgerToggle, setBurgerToggle] = useState(false);
@@ -28,7 +29,6 @@ function App() {
     const [sort, setSort] = useState({
         sortBy: " ",
     });
-    console.log(recentlyViewed);
 
     const handleSelectChange = (e) => {
         e.preventDefault();
@@ -63,6 +63,8 @@ function App() {
                 handleSortChange,
                 filter,
                 handleSelectChange,
+                paginationNumber,
+                setPaginationNumber,
             }}
         >
             <BrowserRouter>
