@@ -12,15 +12,17 @@ const Product = () => {
     const details = providedData.ecommerce.filter(
         (items) => items.id === Number(id)
     );
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    const handleAmountDecrease = () => {
+    const handleAmountDecrease = (e) => {
+        e.preventDefault();
         // decreases the amount of items that are to be ordered
         amount > 1 && setAmount((item) => (item -= 1));
     };
-    const handleAmountIncrease = () => {
+    const handleAmountIncrease = (e) => {
+        e.preventDefault();
         //increases the amount of items that are to be ordered
         amount < details[0].amount && setAmount((item) => (item += 1));
     };

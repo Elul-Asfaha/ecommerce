@@ -10,7 +10,6 @@ const CartModal = () => {
             providedData.ecommerce.filter((items) => items.id === item.Id)
         )
         .map((item) => (item = item[0])); // second .map is to change it from an array of an array of objects to just an array of object
-
     const dispCartItems = filtered.map((items) => (
         <Link
             to={`/product/${items.id}`}
@@ -26,8 +25,9 @@ const CartModal = () => {
                     className='cover rounded-lg'
                 />
             </div>
-            <div>
-                <div className='flex items-center gap-1 text-2xl'>
+            <div className='flex flex-col text-2xl'>
+                <p className='text-center'>{items.model_name}</p>
+                <div className='flex items-center justify-center gap-1'>
                     <p className='flex' key={1}>
                         {items.rating >= 1 ? (
                             <ReactIcons.AiFillStar className='text-green-800' />
@@ -63,7 +63,7 @@ const CartModal = () => {
     ));
 
     return (
-        <div className='flex bg-white shadow-xl py-5 fixed top-[5%] right-5 flex-col gap-5 w-[600px] rounded-xl'>
+        <div className='hidden md:flex bg-white shadow-xl py-5 fixed overflow-y-scroll border border-white top-[5%] right-5 flex-col gap-5 w-[600px] max-h-[800px] rounded-xl'>
             {providedData.cart.length != 0 ? (
                 dispCartItems
             ) : (

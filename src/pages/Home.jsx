@@ -3,22 +3,26 @@ import Nav from "../components/Nav.jsx";
 import Banner from "../components/Banner.jsx";
 import Filter from "../components/Filter.jsx";
 import Products from "../components/Products.jsx";
-import SimilarProducts from "../components/SimilarProducts.jsx";
 import RecentlyViewedProducts from "../components/RecentlyViewedProducts.jsx";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ContextProvider } from "../App";
 const Home = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const providedData = useContext(ContextProvider);
     return (
         <div>
             <MinBanner />
             <Nav />
-            <Banner />
-            <Filter />
-            <Products />
-            <SimilarProducts />
-            <RecentlyViewedProducts />
+            <div onClick={() => providedData.setCartToggle(false)}>
+                <Banner />
+                <Filter />
+                <Products />
+                {providedData.recentlyViewed.length != 0 && (
+                    <RecentlyViewedProducts />
+                )}
+            </div>
         </div>
     );
 };

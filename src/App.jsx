@@ -20,6 +20,31 @@ function App() {
     const handleCartToggler = () => {
         setCartToggle(!cartToggle);
     };
+    const [filter, setFilter] = useState({
+        type: "",
+        price: "",
+        color: "",
+    });
+    const [sort, setSort] = useState({
+        sortBy: " ",
+    });
+    console.log(recentlyViewed);
+
+    const handleSelectChange = (e) => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        setFilter({
+            ...filter,
+            [name]: value,
+        });
+    };
+    const handleSortChange = (e) => {
+        e.preventDefault();
+        setSort({
+            sortBy: e.target.value,
+        });
+    };
+
     return (
         <ContextProvider.Provider
             value={{
@@ -34,6 +59,10 @@ function App() {
                 setRecentlyViewed,
                 recentlyViewed,
                 handleCartToggler,
+                sort,
+                handleSortChange,
+                filter,
+                handleSelectChange,
             }}
         >
             <BrowserRouter>

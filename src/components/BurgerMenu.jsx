@@ -19,7 +19,10 @@ const BurgerMenu = () => {
                 </Link>
                 <Link to='/cart' onClick={providedData.handleBurgerToggler}>
                     Cart (
-                    {providedData.cart.length != 0 && providedData.cart.length})
+                    {providedData.cart.length != 0
+                        ? providedData.cart.length
+                        : "0"}
+                    )
                 </Link>
             </div>
         </div>

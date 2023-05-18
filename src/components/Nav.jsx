@@ -7,7 +7,10 @@ const Nav = () => {
     const providedData = useContext(ContextProvider);
     return (
         <div className='flex items-center justify-between gap-5 capitalize px-[5%] pt-4'>
-            <div className='flex-1 hidden md:flex items-center justify-between'>
+            <div
+                className='flex-1 hidden md:flex items-center justify-between'
+                onClick={() => providedData.setCartToggle(false)}
+            >
                 <Link
                     to='/'
                     className='flex w-[50px]'

@@ -24,24 +24,21 @@ const Card = (props) => {
         };
         providedData.setCart([...providedData.cart, addCart]);
     };
-
+    const handleAddToRecentlyViewed = () => {
+        providedData.setRecentlyViewed((item) => [...item, props.id]);
+    };
     return (
         <div
-            className={`relative w-[330px] ${
-                props.changeWidthOfCard && " md:w-auto md:flex-1"
-            } flex flex-col gap-1 capitalize`}
+            className={`relative md:w-auto min-w-[280px] max-w-[330px] flex flex-col gap-1 capitalize`}
+            onClick={() => handleAddToRecentlyViewed()}
         >
             <Link to={`/product/${props.id}`}>
-                <div
-                    className={`relative ${
-                        !props.changeWidthOfCard && "w-[311px]"
-                    } flex`}
-                >
+                <div className={`relative flex`}>
                     <img
                         src={props.image}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-400 container rounded-lg'
+                        className='bg-gray-300 container rounded-lg min-h-[185px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>
@@ -50,13 +47,33 @@ const Card = (props) => {
                         <p>$ {props.price}</p>
                     </div>
                     <p>wired sterio headset with mic</p>
-                    <div className='flex items-center gap-1'>
-                        <p className='flex'>
-                            <ReactIcons.AiFillStar />
-                            <ReactIcons.AiFillStar />
-                            <ReactIcons.AiFillStar />
-                            <ReactIcons.AiFillStar />
-                            <ReactIcons.AiOutlineStar />
+                    <div className='flex items-center gap-1 text-xl font-bold'>
+                        <p className='flex' key={1}>
+                            {props.rating >= 1 ? (
+                                <ReactIcons.AiFillStar className='text-green-800' />
+                            ) : (
+                                <ReactIcons.AiOutlineStar className='bg-white' />
+                            )}
+                            {props.rating >= 2 ? (
+                                <ReactIcons.AiFillStar className='text-green-800' />
+                            ) : (
+                                <ReactIcons.AiOutlineStar className='bg-white' />
+                            )}
+                            {props.rating >= 3 ? (
+                                <ReactIcons.AiFillStar className='text-green-800' />
+                            ) : (
+                                <ReactIcons.AiOutlineStar className='bg-white' />
+                            )}
+                            {props.rating >= 4 ? (
+                                <ReactIcons.AiFillStar className='text-green-800' />
+                            ) : (
+                                <ReactIcons.AiOutlineStar className='bg-white' />
+                            )}
+                            {props.rating == 5 ? (
+                                <ReactIcons.AiFillStar className='text-green-800' />
+                            ) : (
+                                <ReactIcons.AiOutlineStar className='bg-white' />
+                            )}
                         </p>
                         <p>({props.reviews})</p>
                     </div>
