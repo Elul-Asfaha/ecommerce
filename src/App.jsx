@@ -6,6 +6,7 @@ import BurgerMenu from "./components/BurgerMenu.jsx";
 import ecommerce from "./mockData/ecommerce.json";
 import CartModal from "./components/CartModal.jsx";
 import Cart from "./components/Cart.jsx";
+import Order from "./components/Order.jsx";
 export const ContextProvider = createContext();
 function App() {
     const [paginationNumber, setPaginationNumber] = useState(1);
@@ -72,6 +73,7 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/product/:id' element={<Product />} />
                     <Route path='/cart' element={<Cart />} />
+                    <Route path='/order' element={<Order />} />
                 </Routes>
                 {burgerToggle && <BurgerMenu />}
                 {cartToggle && <CartModal />}

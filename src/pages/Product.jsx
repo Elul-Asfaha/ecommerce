@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import ReactIcons from "../components/ReactIconsImport";
 import Nav from "../components/Nav.jsx";
 import { ContextProvider } from "../App";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const Product = () => {
     const providedData = useContext(ContextProvider);
     const [amount, setAmount] = useState(1);
@@ -210,12 +210,13 @@ const Product = () => {
                             )}
                         </div>
                         <div className='flex flex-col md:flex-row gap-4'>
-                            <button
+                            <Link
+                                to='/order'
                                 onClick={() => handleBuyNow()}
-                                className='md:flex-1 bg-green-800 py-2 px-4 rounded-full'
+                                className='md:flex-1 bg-green-800 py-2 px-4 rounded-full text-center'
                             >
                                 buy now
-                            </button>
+                            </Link>
                             <button
                                 onClick={() => handleAddToCart()}
                                 className='md:flex-1 bg-white py-2 px-4 outline outline-2 outline-green-700 rounded-full'
