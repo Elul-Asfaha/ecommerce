@@ -24,6 +24,16 @@ const BurgerMenu = () => {
                         : "0"}
                     )
                 </Link>
+                <Link
+                    to='/favorites'
+                    onClick={providedData.handleBurgerToggler}
+                >
+                    Favorites (
+                    {providedData.favs.length != 0
+                        ? providedData.favs.length
+                        : "0"}
+                    )
+                </Link>
             </div>
         </div>
     );

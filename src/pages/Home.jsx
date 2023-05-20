@@ -6,7 +6,6 @@ import Products from "../components/Products.jsx";
 import RecentlyViewedProducts from "../components/RecentlyViewedProducts.jsx";
 import { useContext, useEffect } from "react";
 import { ContextProvider } from "../App";
-import PaginationComponent from "../components/PaginationComponent";
 const Home = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -20,7 +19,6 @@ const Home = () => {
                 <Banner />
                 <Filter />
                 <Products />
-                <PaginationComponent />
                 {providedData.recentlyViewed.length != 0 && (
                     <RecentlyViewedProducts />
                 )}
