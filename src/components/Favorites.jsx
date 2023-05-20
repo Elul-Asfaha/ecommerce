@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { ContextProvider } from "../App";
 
-const Cart = () => {
+const Favorites = () => {
     const providedData = useContext(ContextProvider);
-    return <div>cart page placeholder</div>;
+    return <div>favs: {providedData.favs.length}</div>;
 };
-export default Cart;
+export default Favorites;

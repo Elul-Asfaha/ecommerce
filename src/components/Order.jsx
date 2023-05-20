@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import OrderCart from "./OrderCart";
 import Nav from "./Nav";
+import { ContextProvider } from "../App";
 
 const Order = () => {
+    const providedData = useContext(ContextProvider);
+    const cart = providedData.cart;
     const [paymentNotif, setPaymentNotif] = useState(0);
     const [paymentEmail, setPaymentEmail] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
-    console.log(paymentNotif);
+
     return (
         <div>
             <Nav />
@@ -42,9 +45,13 @@ const Order = () => {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col p-5'>
+                <div className='flex flex-col p-5 border border-1 h-fit'>
                     <form className='flex flex-col gap-2'>
                         <p className='text-3xl'>order summery</p>
+                        <div>
+                            <p>total:</p>
+                            <p></p>
+                        </div>
                         <p className='font-bold'>payment details</p>
                         <fieldset>
                             <div className='flex gap-2'>

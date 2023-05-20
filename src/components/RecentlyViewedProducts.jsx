@@ -4,11 +4,8 @@ import { useContext } from "react";
 const RecentlyViewedProducts = () => {
     const providedData = useContext(ContextProvider);
 
-    const recentlyViewedFilter = providedData.recentlyViewed
-        .map((item) =>
-            providedData.ecommerce.filter((items) => items.id === item)
-        )
-        .map((item) => (item = item[0]));
+    const recentlyViewedFilter = providedData.recentlyViewed;
+    console.log(recentlyViewedFilter);
     return (
         <div className='capitalize flex flex-col pb-[1.5%] px-[5%] overflow-hidden gap-5'>
             <p className='text-4xl  font-bold'>Recently viewed</p>
