@@ -5,11 +5,16 @@ import { Link } from "react-router-dom";
 
 const OrderCart = () => {
     const providedData = useContext(ContextProvider);
-    const dispCartItems = providedData.cart.map((items) => (
+    const filtered = providedData.cart
+        .map((item) =>
+            providedData.ecommerce.filter((items) => items.id === item.Id)
+        )
+        .map((item) => (item = item[0])); // second .map is to change it from an array of an array of objects to just an array of object
+    const dispCartItems = filtered.map((items) => (
         <Link
             to={`/product/${items.id}`}
             key={items.id}
-            className='flex justify-between items-center px-5'
+            className='flex justify-between items-center px-5 gap-2'
             onClick={() => providedData.setCartToggle(false)}
         >
             <div className='flex h-[100px]'>
@@ -20,7 +25,7 @@ const OrderCart = () => {
                     className='cover rounded-lg'
                 />
             </div>
-            <div className='flex flex-col text-2xl'>
+            <div className='flex flex-col text-lg'>
                 <p className='text-center'>{items.model_name}</p>
                 <div className='flex items-center justify-center gap-1'>
                     <p className='flex' key={1}>

@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 
 const CartModal = () => {
     const providedData = useContext(ContextProvider);
-    const dispCartItems = providedData.cart.map((items) => (
+    const filtered = providedData.cart
+        .map((item) =>
+            providedData.ecommerce.filter((items) => items.id === item.Id)
+        )
+        .map((item) => (item = item[0])); // second .map is to change it from an array of an array of objects to just an array of object
+    const dispCartItems = filtered.map((items) => (
         <Link
             to={`/product/${items.id}`}
             key={items.id}

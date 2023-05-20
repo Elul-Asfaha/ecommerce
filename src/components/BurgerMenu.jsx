@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const BurgerMenu = () => {
     const providedData = useContext(ContextProvider);
-    console.log(providedData.favs);
     return (
         <div className='fixed top-0 bottom-0 right-0 left-0 md:hidden bg-white'>
             <div className='absolute flex justify-end top-5 right-5 p-2'>
@@ -22,16 +21,6 @@ const BurgerMenu = () => {
                     Cart (
                     {providedData.cart.length != 0
                         ? providedData.cart.length
-                        : "0"}
-                    )
-                </Link>
-                <Link
-                    to='/favorites'
-                    onClick={providedData.handleBurgerToggler}
-                >
-                    Favorites (
-                    {providedData.favs.length != 0
-                        ? providedData.favs.length
                         : "0"}
                     )
                 </Link>

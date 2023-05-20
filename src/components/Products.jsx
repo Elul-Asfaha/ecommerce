@@ -1,14 +1,12 @@
 import Card from "./Card";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ContextProvider } from "../App";
 const Products = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
     const providedData = useContext(ContextProvider);
     const changeWidthOfCard = true;
 
-    const dispProducts = providedData.store;
+    const dispProducts = providedData.ecommerce;
+
     const dispFilteredProducts = dispProducts.color
         ? dispProducts.filter(
               (item) =>
@@ -24,6 +22,7 @@ const Products = () => {
                   ? Number(item.price) <= Number(providedData.filter.price)
                   : ""
           );
+    console.log(providedData.paginationNumber);
     return (
         <div className='capitalize py-[2%] px-[5%] flex flex-col items-center md:block'>
             <p className='text-4xl font-bold mb-5'>headphones for you!</p>
@@ -37,9 +36,9 @@ const Products = () => {
                           .map((item) => (
                               <Card
                                   key={item.id}
-                                  color={item.color}
+                                  color={item.color[0]}
                                   id={item.id}
-                                  image={item.image}
+                                  image={item.image[0]}
                                   price={item.price}
                                   name={item.model_name}
                                   reviews={item.reviews}
@@ -52,9 +51,9 @@ const Products = () => {
                           .map((item) => (
                               <Card
                                   key={item.id}
-                                  color={item.color}
+                                  color={item.color[0]}
                                   id={item.id}
-                                  image={item.image}
+                                  image={item.image[0]}
                                   price={item.price}
                                   name={item.model_name}
                                   reviews={item.reviews}

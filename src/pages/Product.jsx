@@ -9,13 +9,13 @@ const Product = () => {
     const [color, setColor] = useState(1);
     const { id } = useParams(); // gets the product id from the card component
 
-    const details = providedData.store.filter(
+    const details = providedData.ecommerce.filter(
         (items) => items.id === Number(id)
     );
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [id]);
+    }, []);
     const handleAmountDecrease = (e) => {
         e.preventDefault();
         // decreases the amount of items that are to be ordered

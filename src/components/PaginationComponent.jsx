@@ -8,7 +8,10 @@ const PaginationComponent = () => {
         <div className='flex justify-center'>
             <Stack spacing={5} style={{ fontSize: "40px" }}>
                 <Pagination
-                    count={providedData.store && providedData.store.length / 50}
+                    count={
+                        providedData.ecommerce &&
+                        providedData.ecommerce.length / 50
+                    }
                     variant='outlined'
                     shape='rounded'
                     onChange={(e, pageNumber) =>

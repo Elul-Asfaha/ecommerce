@@ -5,68 +5,40 @@ import { Link } from "react-router-dom";
 const Card = (props) => {
     const providedData = useContext(ContextProvider);
     const [toggleLike, setToggleLike] = useState(false);
-    const cardDetails = {
-        color: props.color,
-        id: props.id,
-        image: props.image,
-        price: props.price,
-        name: props.model_name,
-        reviews: props.reviews,
-        rating: props.rating,
+    //adds the data to the favorites array
+    const handleAddToFavorite = () => {
+        providedData.setFav((item) => [...item, props.id]);
+        setToggleLike(!toggleLike);
     };
-
-    //adds the data to the favs database then sets a new fav array to be mapped through
-    const handleSubmitFav = () => {
-        fetch("/ecommerce/favs", {
-            method: "POST",
-            body: JSON.stringify(cardDetails),
-        })
-            .then((res) => res.json())
-            .then((res) => () => providedData.setFav(res))
-            .catch((err) => console.error(err));
-    };
-
     // filters out the data from the favorites array
     const handleRemoveFromFavorite = () => {
         const newFav = providedData.fav.filter((items) => items != props.id);
         providedData.setFav(newFav);
         setToggleLike(!toggleLike);
     };
-
     const handleAddToCart = () => {
-        fetch("/ecommerce/cart", {
-            method: "POST",
-            body: JSON.stringify(cardDetails),
-        })
-            .then((res) => res.json())
-            .then((res) => () => providedData.setCart(res))
-            .catch((err) => console.error(err));
+        const addCart = {
+            Id: props.id,
+            Color: props.color,
+            Amount: 1,
+        };
+        providedData.setCart([...providedData.cart, addCart]);
     };
-
     const handleAddToRecentlyViewed = () => {
-        fetch("/ecommerce/recentlyviewed", {
-            method: "POST",
-            body: JSON.stringify(cardDetails),
-        })
-            .then((res) => res.json())
-            .then((res) => () => providedData.setRecentlyViewed(res))
-            .catch((err) => console.error(err));
+        providedData.setRecentlyViewed((item) => [...item, props.id]);
     };
-
     return (
         <div
-            className={`relative md:w-auto w-[100%] md:min-w-[280px] md:max-w-[330px] flex flex-col gap-1 capitalize`}
+            className={`relative md:w-auto min-w-[280px] max-w-[330px] flex flex-col gap-1 capitalize`}
+            onClick={() => handleAddToRecentlyViewed()}
         >
-            <Link
-                to={`/product/${props.id}`}
-                onClick={() => handleAddToRecentlyViewed()}
-            >
+            <Link to={`/product/${props.id}`}>
                 <div className={`relative flex`}>
                     <img
-                        src={props.image[0]}
+                        src={props.image}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 container rounded-lg min-w-[337.5px] min-h-[209px]'
+                        className='bg-gray-300 container rounded-lg min-h-[185px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>
@@ -108,17 +80,17 @@ const Card = (props) => {
                 </div>
             </Link>
             <button
-                onClick={() => handleAddToCart()}
+                onClick={handleAddToCart}
                 className='py-1 px-3 border hover:text-white border-none outline outline-1 outline-black hover:outline-green-700 active:outline-green-900  hover:bg-green-700 active:bg-green-900 border-black w-fit rounded-full'
             >
                 add to cart
             </button>
 
-            <button
+            <div
                 className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl cursor-pointer hover:text-orange-500'
                 onClick={
                     !toggleLike
-                        ? () => handleSubmitFav()
+                        ? () => handleAddToFavorite()
                         : () => handleRemoveFromFavorite()
                 }
             >
@@ -127,7 +99,7 @@ const Card = (props) => {
                 ) : (
                     <ReactIcons.AiFillHeart />
                 )}
-            </button>
+            </div>
         </div>
     );
 };
