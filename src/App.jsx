@@ -76,8 +76,6 @@ function App() {
         getWishList();
         getRecentlyViewedList();
     }, []);
-    console.log(recentlyViewed);
-    console.log(store);
     const [totalPrice, setTotalPrice] = useState(0);
 
     const handleBurgerToggler = () => {

@@ -6,7 +6,6 @@ const Order = () => {
     const [paymentNotif, setPaymentNotif] = useState(0);
     const [paymentEmail, setPaymentEmail] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
-    console.log(paymentNotif);
     return (
         <div>
             <Nav />

@@ -8,7 +8,6 @@ import { deleteDoc, collection } from "firebase/firestore";
 const Wishlist = () => {
     const providedData = useContext(ContextProvider);
     const handleRemoveWishlist = async (wishId) => {
-        console.log(wishId);
         const wishlistCollectionRef = collection(db, "wishlist", wishId);
         try {
             await deleteDoc(wishlistCollectionRef);
@@ -78,7 +77,6 @@ const Wishlist = () => {
             </button>
         </div>
     ));
-    console.log(providedData.wishlist);
     return (
         <div className='flex flex-col gap-5 px-5 '>
             <Nav back={true} />
