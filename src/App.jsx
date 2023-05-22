@@ -43,7 +43,6 @@ function App() {
                 const data = await getDocs(cartCollectionRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
-                    id: doc.id,
                 }));
                 setCart(filteredData);
             } catch (err) {
@@ -55,7 +54,6 @@ function App() {
                 const data = await getDocs(wishCollectionRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
-                    id: doc.id,
                 }));
                 setWishlist(filteredData);
             } catch (err) {
@@ -67,7 +65,6 @@ function App() {
                 const data = await getDocs(recentlyViewedRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
-                    id: doc.id,
                 }));
                 setRecentlyViewed(filteredData);
             } catch (err) {
@@ -79,7 +76,8 @@ function App() {
         getWishList();
         getRecentlyViewedList();
     }, []);
-
+    console.log(recentlyViewed);
+    console.log(store);
     const [totalPrice, setTotalPrice] = useState(0);
 
     const handleBurgerToggler = () => {

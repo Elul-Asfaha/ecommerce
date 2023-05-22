@@ -51,7 +51,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
 
     return (
         <div
-            className={`relative md:w-auto w-[320px] md:min-w-[280px] md:max-w-[330px] flex flex-col gap-1 capitalize`}
+            className={`relative md:w-auto min-w-[320px] md:min-w-[280px] md:max-w-[330px] flex flex-col gap-1 capitalize`}
         >
             <Link
                 to={`/product/${id}`}
@@ -62,7 +62,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                         src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg w-[320px] md:w-full min-h-[209px]'
+                        className='bg-gray-300 cover rounded-lg min-w-[320px] md:w-full min-h-[209px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>

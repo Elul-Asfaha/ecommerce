@@ -23,7 +23,7 @@ const OrderCart = () => {
             <div className='flex flex-col text-2xl'>
                 <p className='text-center'>{items.model_name}</p>
                 <div className='flex items-center justify-center gap-1'>
-                    <p className='flex' key={1}>
+                    <p className='flex' key={items.id}>
                         {items.rating >= 1 ? (
                             <ReactIcons.AiFillStar className='text-green-800' />
                         ) : (

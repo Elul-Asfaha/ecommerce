@@ -38,7 +38,7 @@ const Product = () => {
     // this functions prevents the rating from being calculated before the details var is assigned
     const handleRatingCalc = () => {
         const ratingDisp = (
-            <p className='flex' key={1}>
+            <p className='flex' key={id}>
                 {details[0].rating >= 1 ? (
                     <ReactIcons.AiFillStar className='text-green-800' />
                 ) : (

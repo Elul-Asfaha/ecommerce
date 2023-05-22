@@ -13,7 +13,7 @@ const RecentlyViewedProducts = () => {
                         key={item.id}
                         color={item.color[0]}
                         id={item.id}
-                        image={item.image[0]}
+                        image={item.image}
                         price={item.price}
                         name={item.model_name}
                         reviews={item.reviews}
