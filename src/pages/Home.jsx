@@ -18,7 +18,7 @@ const Home = () => {
             <div onClick={() => providedData.setCartToggle(false)}>
                 <Banner />
                 <Filter />
-                <Products />
+                {providedData.store && <Products />}
                 {providedData.recentlyViewed.length != 0 && (
                     <RecentlyViewedProducts />
                 )}
