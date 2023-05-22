@@ -14,14 +14,14 @@ const Cart = () => {
     const dispCartItems = providedData.cart.map((items) => (
         <div
             key={items.id}
-            className='flex flex-col md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
+            className='flex flex-col  md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
         >
             <Link
                 to={`/product/${items.id}`}
-                className='flex flex-col md:flex-row justify-between items-center md:px-5'
+                className='flex flex-col md:flex-row justify-between items-center gap-5 md:px-5'
                 onClick={() => providedData.setCartToggle(false)}
             >
-                <div className='flex h-[150px]'>
+                <div className='flex md:flex-1 w-[320px] md:w-auto h-[150px]'>
                     <img
                         src={items.image[0]}
                         alt=''
@@ -29,7 +29,7 @@ const Cart = () => {
                         className='cover rounded-lg'
                     />
                 </div>
-                <div className='flex flex-col text-2xl'>
+                <div className='flex md:flex-1 flex-col text-2xl'>
                     <p className='text-center'>{items.model_name}</p>
                     <div className='flex items-center justify-center gap-1'>
                         <p className='flex' key={1}>
@@ -62,7 +62,9 @@ const Cart = () => {
                         <p>({items.reviews && items.reviews})</p>
                     </div>
                 </div>
-                <div className='font-bold'>${items.price}</div>
+                <div className='font-bold text-center md:flex-1'>
+                    ${items.price}
+                </div>
             </Link>
             <button
                 className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%]'
@@ -73,7 +75,7 @@ const Cart = () => {
         </div>
     ));
     return (
-        <div className='flex flex-col gap-5 px-5 '>
+        <div className='flex flex-col gap-5 '>
             <Nav back={true} />
             <div className='flex flex-col gap-5 mx-auto'>
                 {providedData.cart.length != 0 ? (

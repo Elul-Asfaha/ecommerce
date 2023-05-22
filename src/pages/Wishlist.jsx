@@ -19,11 +19,11 @@ const Wishlist = () => {
     const dispCartItems = providedData.wishlist.map((items) => (
         <div
             key={items.id}
-            className='flex flex-col md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
+            className='flex flex-col  md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
         >
             <Link
                 to={`/product/${items.id}`}
-                className='flex flex-col md:flex-row justify-between items-center md:px-5'
+                className='flex flex-col md:flex-row justify-between items-center gap-5 md:px-5'
                 onClick={() => providedData.setCartToggle(false)}
             >
                 <div className='flex h-[150px]'>
@@ -78,7 +78,7 @@ const Wishlist = () => {
         </div>
     ));
     return (
-        <div className='flex flex-col gap-5 px-5 '>
+        <div className='flex flex-col gap-5 '>
             <Nav back={true} />
             <div className='flex flex-col gap-5 mx-auto'>
                 {providedData.wishlist.length != 0 ? (
