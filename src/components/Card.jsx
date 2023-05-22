@@ -2,104 +2,120 @@ import { useContext, useState } from "react";
 import ReactIcons from "./ReactIconsImport";
 import { ContextProvider } from "../App";
 import { Link } from "react-router-dom";
-const Card = (props) => {
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
+const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
     const providedData = useContext(ContextProvider);
     const [toggleLike, setToggleLike] = useState(false);
-    //adds the data to the favorites array
-    const handleAddToFavorite = () => {
-        providedData.setFav((item) => [...item, props.id]);
-        setToggleLike(!toggleLike);
+    const cartCollectionRef = collection(db, "cart");
+    const wishlistCollectionRef = collection(db, "wishlist");
+
+    const cardDetails = {
+        color: color,
+        id: id,
+        image: image,
+        price: price,
+        model_name: name,
+        reviews: reviews,
+        rating: rating,
+        amount: amount,
     };
+
+    //adds the data to the favs database then sets a new fav array to be mapped through
+    const handleSubmitFav = async () => {
+        try {
+            await addDoc(wishlistCollectionRef, cardDetails);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     // filters out the data from the favorites array
-    const handleRemoveFromFavorite = () => {
-        const newFav = providedData.fav.filter((items) => items != props.id);
-        providedData.setFav(newFav);
-        setToggleLike(!toggleLike);
+
+    const handleAddToCart = async () => {
+        try {
+            await addDoc(cartCollectionRef, cardDetails);
+        } catch (err) {
+            console.error(err);
+        }
     };
-    const handleAddToCart = () => {
-        const addCart = {
-            Id: props.id,
-            Color: props.color,
-            Amount: 1,
-        };
-        providedData.setCart([...providedData.cart, addCart]);
+
+    const handleAddToRecentlyViewed = async () => {
+        const recentlyViewedCOllection = collection(db, "recentlyviewed");
+        try {
+            await addDoc(recentlyViewedCOllection, cardDetails);
+        } catch (err) {
+            console.error(err);
+        }
     };
-    const handleAddToRecentlyViewed = () => {
-        providedData.setRecentlyViewed((item) => [...item, props.id]);
-    };
+
     return (
         <div
-            className={`relative md:w-auto min-w-[280px] max-w-[330px] flex flex-col gap-1 capitalize`}
-            onClick={() => handleAddToRecentlyViewed()}
+            className={`relative md:w-auto w-[320px] md:min-w-[280px] md:max-w-[330px] flex flex-col gap-1 capitalize`}
         >
-            <Link to={`/product/${props.id}`}>
+            <Link
+                to={`/product/${id}`}
+                onClick={() => handleAddToRecentlyViewed()}
+            >
                 <div className={`relative flex`}>
                     <img
-                        src={props.image}
+                        src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 container rounded-lg min-h-[185px]'
+                        className='bg-gray-300 cover rounded-lg w-[320px] md:w-full min-h-[209px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>
                     <div className='flex justify-between font-bold'>
                         <p>wireless earbuds, ipx8</p>
-                        <p>$ {props.price}</p>
+                        <p>$ {price}</p>
                     </div>
                     <p>wired sterio headset with mic</p>
                     <div className='flex items-center gap-1 text-xl font-bold'>
-                        <p className='flex' key={1}>
-                            {props.rating >= 1 ? (
+                        <p className='flex' key={id}>
+                            {rating >= 1 ? (
                                 <ReactIcons.AiFillStar className='text-green-800' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
-                            {props.rating >= 2 ? (
+                            {rating >= 2 ? (
                                 <ReactIcons.AiFillStar className='text-green-800' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
-                            {props.rating >= 3 ? (
+                            {rating >= 3 ? (
                                 <ReactIcons.AiFillStar className='text-green-800' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
-                            {props.rating >= 4 ? (
+                            {rating >= 4 ? (
                                 <ReactIcons.AiFillStar className='text-green-800' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
-                            {props.rating == 5 ? (
+                            {rating == 5 ? (
                                 <ReactIcons.AiFillStar className='text-green-800' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                         </p>
-                        <p>({props.reviews})</p>
+                        <p>({reviews})</p>
                     </div>
                 </div>
             </Link>
             <button
-                onClick={handleAddToCart}
+                onClick={() => handleAddToCart()}
                 className='py-1 px-3 border hover:text-white border-none outline outline-1 outline-black hover:outline-green-700 active:outline-green-900  hover:bg-green-700 active:bg-green-900 border-black w-fit rounded-full'
             >
                 add to cart
             </button>
 
-            <div
+            <button
                 className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl cursor-pointer hover:text-orange-500'
-                onClick={
-                    !toggleLike
-                        ? () => handleAddToFavorite()
-                        : () => handleRemoveFromFavorite()
-                }
+                onClick={() => handleSubmitFav()}
             >
-                {!toggleLike ? (
-                    <ReactIcons.AiOutlineHeart />
-                ) : (
-                    <ReactIcons.AiFillHeart />
-                )}
-            </div>
+                <ReactIcons.AiOutlineHeart />
+            </button>
         </div>
     );
 };

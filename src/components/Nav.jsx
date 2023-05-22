@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import ReactIcons from "./ReactIconsImport";
 import { Link } from "react-router-dom";
 import { ContextProvider } from "../App";
-const Nav = () => {
+const Nav = ({ back }) => {
     const providedData = useContext(ContextProvider);
     return (
         <div className='flex items-center justify-between gap-5 capitalize px-[5%] pt-4'>
@@ -38,6 +38,14 @@ const Nav = () => {
                     <ReactIcons.FiChevronDown />
                 </div>
             </div>
+            {back && (
+                <div
+                    className='flex absolute text-3xl left-[5%] md:hidden'
+                    onClick={() => history.back()}
+                >
+                    <ReactIcons.BiArrowBack />
+                </div>
+            )}
             <div className='flex-1 flex items-center justify-center md:justify-between'>
                 <div
                     className='flex items-center bg-slate-200 rounded-full px-5 py-1'

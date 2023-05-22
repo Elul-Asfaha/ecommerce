@@ -24,6 +24,13 @@ const BurgerMenu = () => {
                         : "0"}
                     )
                 </Link>
+                <Link to='/wishlist' onClick={providedData.handleBurgerToggler}>
+                    Wishlist (
+                    {providedData.wishlist.length != 0
+                        ? providedData.wishlist.length
+                        : "0"}
+                    )
+                </Link>
             </div>
         </div>
     );

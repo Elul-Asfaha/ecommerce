@@ -3,16 +3,11 @@ import { ContextProvider } from "../App";
 import { useContext } from "react";
 const RecentlyViewedProducts = () => {
     const providedData = useContext(ContextProvider);
-
-    const recentlyViewedFilter = providedData.recentlyViewed
-        .map((item) =>
-            providedData.ecommerce.filter((items) => items.id === item)
-        )
-        .map((item) => (item = item[0]));
+    const recentlyViewedFilter = providedData.recentlyViewed;
     return (
         <div className='capitalize flex flex-col pb-[1.5%] px-[5%] overflow-hidden gap-5'>
             <p className='text-4xl  font-bold'>Recently viewed</p>
-            <div className='flex gap-5 p-5 overflow-x-scroll '>
+            <div className='flex p-5 gap-5 overflow-x-scroll '>
                 {recentlyViewedFilter.map((item) => (
                     <Card
                         key={item.id}
@@ -23,6 +18,7 @@ const RecentlyViewedProducts = () => {
                         name={item.model_name}
                         reviews={item.reviews}
                         rating={item.rating}
+                        amount={item.amount}
                     />
                 ))}
             </div>

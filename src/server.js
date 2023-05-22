@@ -11,7 +11,6 @@ export function makeServer({ environment = "test" } = {}) {
     let server = createServer({
         environment,
 
-
         routes() {
             this.get("/ecommerce/products", () => products);
             this.get("/ecommerce/favs", () => favs);
@@ -20,12 +19,14 @@ export function makeServer({ environment = "test" } = {}) {
                 favs.push(attrs)
                 return favs
             })
+
             this.get("/ecommerce/cart", () => cart);
             this.post("/ecommerce/cart", (schema, request) => {
                 let attrs = JSON.parse(request.requestBody)
                 cart.push(attrs)
                 return cart
             })
+
             this.get("/ecommerce/recentlyviewed", () => recentlyViewed)
             this.post("/ecommerce/recentlyviewed", (schema, request) => {
                 let attrs = JSON.parse(request.requestBody)
