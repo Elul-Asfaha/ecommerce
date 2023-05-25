@@ -10,7 +10,7 @@ const RecentlyViewedProducts = () => {
             <div className='flex p-5 gap-5 overflow-x-scroll '>
                 {recentlyViewedFilter.map((item) => (
                     <Card
-                        key={item.id}
+                        key={item.recentlyViewedId}
                         color={item.color[0]}
                         id={item.id}
                         image={item.image}

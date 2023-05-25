@@ -1,19 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ContextProvider } from "../App";
 import ReactIcons from "../components/ReactIconsImport";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
-import { collection, deleteDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 const Cart = () => {
     const providedData = useContext(ContextProvider);
+    const cartCollectionRef = collection(db, "cart");
+    const [cart, setCart] = useState([]);
+
+    // removes the item selected from the cart collection in the firebase databse
     const handleRemoveCartItem = async (cartItemId) => {
-        const cartCollectionRef = collection(db, "cart", cartItemId);
+        const cartCollectionRef = doc(db, "cart", cartItemId);
         await deleteDoc(cartCollectionRef);
+        window.location.reload();
     };
+
     const dispCartItems = providedData.cart.map((items) => (
         <div
-            key={items.id}
+            key={items.cartId}
             className='flex flex-col  md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
         >
             <Link
@@ -34,27 +40,27 @@ const Cart = () => {
                     <div className='flex items-center justify-center gap-1'>
                         <p className='flex' key={1}>
                             {items.rating >= 1 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating >= 2 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating >= 3 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating >= 4 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating == 5 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
@@ -67,8 +73,8 @@ const Cart = () => {
                 </div>
             </Link>
             <button
-                className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%]'
-                onClick={() => handleRemoveCartItem(items.id)}
+                className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%] active:bg-green-800'
+                onClick={() => handleRemoveCartItem(items.cartId)}
             >
                 Remove
             </button>

@@ -29,7 +29,7 @@ const Products = () => {
     return (
         <div className='capitalize py-[2%] px-[5%] flex flex-col items-center md:block'>
             <p className='text-4xl font-bold mb-5'>headphones for you!</p>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-between gap-5'>
                 {dispFilteredProducts.length == 0
                     ? dispProducts
                           .slice(
@@ -51,7 +51,7 @@ const Products = () => {
                               />
                           ))
                     : dispFilteredProducts
-                          .slice(0, 40)
+                          .slice(0, 50)
                           .map((item) => (
                               <Card
                                   key={item.id}

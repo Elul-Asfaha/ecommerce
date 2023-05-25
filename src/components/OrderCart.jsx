@@ -25,27 +25,27 @@ const OrderCart = () => {
                 <div className='flex items-center justify-center gap-1'>
                     <p className='flex' key={items.id}>
                         {items.rating >= 1 ? (
-                            <ReactIcons.AiFillStar className='text-green-800' />
+                            <ReactIcons.AiFillStar className='text-yellow-500' />
                         ) : (
                             <ReactIcons.AiOutlineStar className='bg-white' />
                         )}
                         {items.rating >= 2 ? (
-                            <ReactIcons.AiFillStar className='text-green-800' />
+                            <ReactIcons.AiFillStar className='text-yellow-500' />
                         ) : (
                             <ReactIcons.AiOutlineStar className='bg-white' />
                         )}
                         {items.rating >= 3 ? (
-                            <ReactIcons.AiFillStar className='text-green-800' />
+                            <ReactIcons.AiFillStar className='text-yellow-500' />
                         ) : (
                             <ReactIcons.AiOutlineStar className='bg-white' />
                         )}
                         {items.rating >= 4 ? (
-                            <ReactIcons.AiFillStar className='text-green-800' />
+                            <ReactIcons.AiFillStar className='text-yellow-500' />
                         ) : (
                             <ReactIcons.AiOutlineStar className='bg-white' />
                         )}
                         {items.rating == 5 ? (
-                            <ReactIcons.AiFillStar className='text-green-800' />
+                            <ReactIcons.AiFillStar className='text-yellow-500' />
                         ) : (
                             <ReactIcons.AiOutlineStar className='bg-white' />
                         )}

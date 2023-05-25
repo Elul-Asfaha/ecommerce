@@ -4,21 +4,22 @@ import ReactIcons from "../components/ReactIconsImport";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import { db } from "../config/firebase";
-import { deleteDoc, collection } from "firebase/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 const Wishlist = () => {
     const providedData = useContext(ContextProvider);
     const handleRemoveWishlist = async (wishId) => {
-        const wishlistCollectionRef = collection(db, "wishlist", wishId);
+        const wishlistCollectionRef = doc(db, "wishlist", wishId);
         try {
             await deleteDoc(wishlistCollectionRef);
         } catch (err) {
             console.error(err);
         }
+        window.location.reload();
     };
 
     const dispCartItems = providedData.wishlist.map((items) => (
         <div
-            key={items.id}
+            key={items.wishlistId}
             className='flex flex-col  md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
         >
             <Link
@@ -39,27 +40,27 @@ const Wishlist = () => {
                     <div className='flex items-center justify-center gap-1'>
                         <p className='flex' key={items.id}>
                             {items.rating >= 1 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating >= 2 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating >= 3 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating >= 4 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {items.rating == 5 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
@@ -71,7 +72,7 @@ const Wishlist = () => {
             </Link>
             <button
                 className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%]'
-                onClick={() => handleRemoveWishlist(items.id)}
+                onClick={() => handleRemoveWishlist(items.wishlistId)}
             >
                 Remove
             </button>
@@ -84,7 +85,7 @@ const Wishlist = () => {
                 {providedData.wishlist.length != 0 ? (
                     dispCartItems
                 ) : (
-                    <div className='flex items-center text-center justify-center h-[60px]'>
+                    <div className='flex items-center text-center justify-center h-[60px] active:bg-green-800'>
                         <p className='font-bold'>Such empty? Much Wow!</p>
                     </div>
                 )}

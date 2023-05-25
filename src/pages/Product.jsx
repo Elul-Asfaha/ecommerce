@@ -17,11 +17,11 @@ const Product = () => {
         window.scrollTo(0, 0);
     }, [id]);
 
-    const handleAmountDecrease = (e) => {
+    const handleAmountDecrease = () => {
         // decreases the amount of items that are to be ordered
         amount > 1 && setAmount((item) => (item -= 1));
     };
-    const handleAmountIncrease = (e) => {
+    const handleAmountIncrease = () => {
         //increases the amount of items that are to be ordered
         amount < details[0].amount && setAmount((item) => (item += 1));
     };
@@ -40,27 +40,27 @@ const Product = () => {
         const ratingDisp = (
             <p className='flex' key={id}>
                 {details[0].rating >= 1 ? (
-                    <ReactIcons.AiFillStar className='text-green-800' />
+                    <ReactIcons.AiFillStar className='text-yellow-500' />
                 ) : (
                     <ReactIcons.AiOutlineStar className='bg-white' />
                 )}
                 {details[0].rating >= 2 ? (
-                    <ReactIcons.AiFillStar className='text-green-800' />
+                    <ReactIcons.AiFillStar className='text-yellow-500' />
                 ) : (
                     <ReactIcons.AiOutlineStar className='bg-white' />
                 )}
                 {details[0].rating >= 3 ? (
-                    <ReactIcons.AiFillStar className='text-green-800' />
+                    <ReactIcons.AiFillStar className='text-yellow-500' />
                 ) : (
                     <ReactIcons.AiOutlineStar className='bg-white' />
                 )}
                 {details[0].rating >= 4 ? (
-                    <ReactIcons.AiFillStar className='text-green-800' />
+                    <ReactIcons.AiFillStar className='text-yellow-500' />
                 ) : (
                     <ReactIcons.AiOutlineStar className='bg-white' />
                 )}
                 {details[0].rating == 5 ? (
-                    <ReactIcons.AiFillStar className='text-green-800' />
+                    <ReactIcons.AiFillStar className='text-yellow-500' />
                 ) : (
                     <ReactIcons.AiOutlineStar className='bg-white' />
                 )}

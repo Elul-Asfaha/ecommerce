@@ -28,6 +28,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
+        window.location.reload();
     };
 
     // filters out the data from the favorites array
@@ -38,6 +39,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
+        window.location.reload();
     };
 
     const handleAddToRecentlyViewed = async () => {
@@ -47,11 +49,12 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
+        window.location.reload();
     };
 
     return (
         <div
-            className={`relative md:w-auto min-w-[320px] md:min-w-[280px] md:max-w-[330px] flex flex-col gap-1 capitalize`}
+            className={`relative min-w-[320px] sm:min-w-fit sm:w-[40%] md:max-w-[330px] flex flex-col gap-1 capitalize`}
         >
             <Link
                 to={`/product/${id}`}
@@ -62,7 +65,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                         src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg min-w-[320px] md:w-full min-h-[209px]'
+                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full min-h-[209px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>
@@ -74,27 +77,27 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                     <div className='flex items-center gap-1 text-xl font-bold'>
                         <p className='flex' key={id}>
                             {rating >= 1 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {rating >= 2 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {rating >= 3 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {rating >= 4 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}
                             {rating == 5 ? (
-                                <ReactIcons.AiFillStar className='text-green-800' />
+                                <ReactIcons.AiFillStar className='text-yellow-500' />
                             ) : (
                                 <ReactIcons.AiOutlineStar className='bg-white' />
                             )}

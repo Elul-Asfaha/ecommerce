@@ -43,6 +43,7 @@ function App() {
                 const data = await getDocs(cartCollectionRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
+                    cartId: doc.id,
                 }));
                 setCart(filteredData);
             } catch (err) {
@@ -54,6 +55,7 @@ function App() {
                 const data = await getDocs(wishCollectionRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
+                    wishlistId: doc.id,
                 }));
                 setWishlist(filteredData);
             } catch (err) {
@@ -65,6 +67,7 @@ function App() {
                 const data = await getDocs(recentlyViewedRef);
                 const filteredData = data.docs.map((doc) => ({
                     ...doc.data(),
+                    recentlyViewedId: doc.id,
                 }));
                 setRecentlyViewed(filteredData);
             } catch (err) {
