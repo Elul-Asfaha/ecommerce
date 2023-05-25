@@ -26,7 +26,7 @@ const Filter = () => {
                 <select
                     name='price'
                     id='price'
-                    className='flex  border border-black w-fit rounded-full px-3  gap-2'
+                    className='flex border border-black w-fit rounded-full px-3  gap-2'
                     onChange={providedData.handleSelectChange}
                 >
                     <option value=''>All</option>
@@ -41,7 +41,7 @@ const Filter = () => {
                 <select
                     name='color'
                     id='color'
-                    className='flex  border border-black  rounded-full gap-2'
+                    className='flex border border-black w-fit rounded-full px-3  gap-2'
                     onChange={providedData.handleSelectChange}
                 >
                     <option value=''>All</option>

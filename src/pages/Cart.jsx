@@ -20,19 +20,19 @@ const Cart = () => {
     const dispCartItems = providedData.cart.map((items) => (
         <div
             key={items.cartId}
-            className='flex flex-col  md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
+            className='flex flex-col md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
         >
             <Link
                 to={`/product/${items.id}`}
                 className='flex flex-col md:flex-row justify-between items-center gap-5 md:px-5'
                 onClick={() => providedData.setCartToggle(false)}
             >
-                <div className='flex md:flex-1 w-[320px] md:w-auto h-[150px]'>
+                <div className='relative flex'>
                     <img
                         src={items.image[0]}
                         alt=''
                         loading='lazy'
-                        className='cover rounded-lg'
+                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full max-w-[350px] min-h-[209px]'
                     />
                 </div>
                 <div className='flex md:flex-1 flex-col text-2xl'>
@@ -83,7 +83,7 @@ const Cart = () => {
     return (
         <div className='flex flex-col gap-5 '>
             <Nav back={true} />
-            <div className='flex flex-col gap-5 mx-auto'>
+            <div className='flex flex-col gap-5 mx-auto px-5'>
                 {providedData.cart.length != 0 ? (
                     dispCartItems
                 ) : (
