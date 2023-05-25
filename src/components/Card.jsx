@@ -60,7 +60,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                 to={`/product/${id}`}
                 onClick={() => handleAddToRecentlyViewed()}
             >
-                <div className={`relative flex`}>
+                <div className='relative flex max-w-[370px]'>
                     <img
                         src={image[0]}
                         alt=''
