@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { ContextProvider } from "../App";
-import ReactIcons from "../components/ReactIconsImport";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import { db } from "../config/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+import RatingComponent from "../components/Ratingcomponent";
 const Wishlist = () => {
     const providedData = useContext(ContextProvider);
     const handleRemoveWishlist = async (wishId) => {
@@ -38,33 +38,8 @@ const Wishlist = () => {
                 <div className='flex flex-col text-2xl'>
                     <p className='text-center'>{items.model_name}</p>
                     <div className='flex items-center justify-center gap-1'>
-                        <p className='flex' key={items.id}>
-                            {items.rating >= 1 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating >= 2 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating >= 3 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating >= 4 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating == 5 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                        </p>
+                        <RatingComponent rating={items.rating} />
+
                         <p>({items.reviews && items.reviews})</p>
                     </div>
                 </div>

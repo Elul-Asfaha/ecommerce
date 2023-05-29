@@ -4,6 +4,7 @@ import { ContextProvider } from "../App";
 import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
+import RatingComponent from "./Ratingcomponent";
 const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
     const providedData = useContext(ContextProvider);
     const [toggleLike, setToggleLike] = useState(false);
@@ -75,33 +76,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                     </div>
                     <p>wired sterio headset with mic</p>
                     <div className='flex items-center gap-1 text-xl font-bold'>
-                        <p className='flex' key={id}>
-                            {rating >= 1 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {rating >= 2 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {rating >= 3 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {rating >= 4 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {rating == 5 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                        </p>
+                        <RatingComponent rating={rating} />
                         <p>({reviews})</p>
                     </div>
                 </div>

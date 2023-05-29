@@ -24,7 +24,6 @@ function App() {
     const wishCollectionRef = collection(db, "wishlist");
     const productCollectionRef = collection(db, "products");
     const recentlyViewedRef = collection(db, "recentlyviewed");
-
     useEffect(() => {
         const getProductList = async () => {
             try {
@@ -78,6 +77,8 @@ function App() {
         getCartList();
         getWishList();
         getRecentlyViewedList();
+
+        console.log("a");
     }, []);
     const [totalPrice, setTotalPrice] = useState(0);
 

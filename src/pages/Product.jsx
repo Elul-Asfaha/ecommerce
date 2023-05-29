@@ -5,6 +5,7 @@ import { ContextProvider } from "../App";
 import { Link, useParams } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
+import RatingComponent from "../components/Ratingcomponent";
 const Product = () => {
     const providedData = useContext(ContextProvider);
     const [amount, setAmount] = useState(1);
@@ -37,35 +38,7 @@ const Product = () => {
 
     // this functions prevents the rating from being calculated before the details var is assigned
     const handleRatingCalc = () => {
-        const ratingDisp = (
-            <p className='flex' key={id}>
-                {details[0].rating >= 1 ? (
-                    <ReactIcons.AiFillStar className='text-yellow-500' />
-                ) : (
-                    <ReactIcons.AiOutlineStar className='bg-white' />
-                )}
-                {details[0].rating >= 2 ? (
-                    <ReactIcons.AiFillStar className='text-yellow-500' />
-                ) : (
-                    <ReactIcons.AiOutlineStar className='bg-white' />
-                )}
-                {details[0].rating >= 3 ? (
-                    <ReactIcons.AiFillStar className='text-yellow-500' />
-                ) : (
-                    <ReactIcons.AiOutlineStar className='bg-white' />
-                )}
-                {details[0].rating >= 4 ? (
-                    <ReactIcons.AiFillStar className='text-yellow-500' />
-                ) : (
-                    <ReactIcons.AiOutlineStar className='bg-white' />
-                )}
-                {details[0].rating == 5 ? (
-                    <ReactIcons.AiFillStar className='text-yellow-500' />
-                ) : (
-                    <ReactIcons.AiOutlineStar className='bg-white' />
-                )}
-            </p>
-        );
+        const ratingDisp = <RatingComponent rating={details[0].rating} />;
         return ratingDisp;
     };
 

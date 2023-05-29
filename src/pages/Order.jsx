@@ -6,7 +6,9 @@ import { useParams } from "react-router-dom";
 
 const Order = () => {
     const providedData = useContext(ContextProvider);
+    const [paymentNotif, setPaymentNotif] = useState(0);
     const [paymentEmail, setPaymentEmail] = useState("");
+    const [paymentMethod, setPaymentMethod] = useState("");
     const { id } = useParams();
     const details = providedData.store.filter((item) => item.id == id);
     return (
