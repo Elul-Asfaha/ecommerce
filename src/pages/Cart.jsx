@@ -1,15 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ContextProvider } from "../App";
-import ReactIcons from "../components/ReactIconsImport";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
-import { collection, deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import RatingComponent from "../components/Ratingcomponent";
 const Cart = () => {
     const providedData = useContext(ContextProvider);
-    const cartCollectionRef = collection(db, "cart");
-
     // removes the item selected from the cart collection in the firebase databse
     const handleRemoveCartItem = async (cartItemId) => {
         const cartCollectionRef = doc(db, "cart", cartItemId);

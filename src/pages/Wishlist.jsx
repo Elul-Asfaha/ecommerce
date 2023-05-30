@@ -20,14 +20,14 @@ const Wishlist = () => {
     const dispCartItems = providedData.wishlist.map((items) => (
         <div
             key={items.wishlistId}
-            className='flex flex-col  md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
+            className='flex flex-col md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
         >
             <Link
                 to={`/product/${items.id}`}
                 className='flex flex-col md:flex-row justify-between items-center gap-5 md:px-5'
                 onClick={() => providedData.setCartToggle(false)}
             >
-                <div className='flex h-[150px]'>
+                <div className='relative flex'>
                     <img
                         src={items.image[0]}
                         alt=''
@@ -35,7 +35,7 @@ const Wishlist = () => {
                         className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full max-w-[350px] min-h-[209px]'
                     />
                 </div>
-                <div className='flex flex-col text-2xl'>
+                <div className='flex md:flex-1 flex-col text-2xl'>
                     <p className='text-center'>{items.model_name}</p>
                     <div className='flex items-center justify-center gap-1'>
                         <RatingComponent rating={items.rating} />
@@ -43,10 +43,12 @@ const Wishlist = () => {
                         <p>({items.reviews && items.reviews})</p>
                     </div>
                 </div>
-                <div className='font-bold'>${items.price}</div>
+                <div className='font-bold text-center md:flex-1'>
+                    ${items.price}
+                </div>
             </Link>
             <button
-                className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%]'
+                className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%] active:bg-green-800'
                 onClick={() => handleRemoveWishlist(items.wishlistId)}
             >
                 Remove
@@ -56,11 +58,11 @@ const Wishlist = () => {
     return (
         <div className='flex flex-col gap-5 '>
             <Nav back={true} />
-            <div className='flex flex-col gap-5 mx-auto'>
+            <div className='flex flex-col gap-5 mx-auto  px-5'>
                 {providedData.wishlist.length != 0 ? (
                     dispCartItems
                 ) : (
-                    <div className='flex items-center text-center justify-center h-[60px] active:bg-green-800'>
+                    <div className='flex items-center text-center justify-center h-[60px]'>
                         <p className='font-bold'>Such empty? Much Wow!</p>
                     </div>
                 )}
