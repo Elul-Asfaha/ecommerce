@@ -13,7 +13,7 @@ const OrderCart = ({ checkOut }) => {
             className='flex flex-col gap-5 md:flex-col justify-between items-center px-5'
             onClick={() => providedData.setCartToggle(false)}
         >
-            <div className='flex h-[100px]'>
+            <div className='flex sm:h-[100px]'>
                 <img
                     src={items.image[0]}
                     alt=''
