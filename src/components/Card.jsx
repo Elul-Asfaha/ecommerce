@@ -67,7 +67,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                         src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full min-h-[209px]'
+                        className='bg-gray-300 cover rounded-lg w-full sm:min-w-full md:w-full h-[500px] sm:min-h-[209px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>

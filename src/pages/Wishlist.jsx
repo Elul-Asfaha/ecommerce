@@ -32,7 +32,7 @@ const Wishlist = () => {
                         src={items.image[0]}
                         alt=''
                         loading='lazy'
-                        className='cover rounded-lg'
+                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full max-w-[350px] min-h-[209px]'
                     />
                 </div>
                 <div className='flex flex-col text-2xl'>

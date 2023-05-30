@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import { collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
+import RatingComponent from "../components/Ratingcomponent";
 const Cart = () => {
     const providedData = useContext(ContextProvider);
     const cartCollectionRef = collection(db, "cart");
@@ -37,33 +38,7 @@ const Cart = () => {
                 <div className='flex md:flex-1 flex-col text-2xl'>
                     <p className='text-center'>{items.model_name}</p>
                     <div className='flex items-center justify-center gap-1'>
-                        <p className='flex' key={1}>
-                            {items.rating >= 1 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating >= 2 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating >= 3 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating >= 4 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                            {items.rating == 5 ? (
-                                <ReactIcons.AiFillStar className='text-yellow-500' />
-                            ) : (
-                                <ReactIcons.AiOutlineStar className='bg-white' />
-                            )}
-                        </p>
+                        <RatingComponent rating={items.rating} />
                         <p>({items.reviews && items.reviews})</p>
                     </div>
                 </div>
