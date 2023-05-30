@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { ContextProvider } from "../App";
-import ReactIcons from "./ReactIconsImport";
 import { Link } from "react-router-dom";
 import RatingComponent from "./Ratingcomponent";
 
-const OrderCart = () => {
+const OrderCart = ({ checkOut }) => {
+    console.log(checkOut);
     const providedData = useContext(ContextProvider);
-    const dispCartItems = providedData.cart.map((items) => (
+    const dispCartItems = checkOut.map((items) => (
         <Link
             to={`/product/${items.id}`}
             key={items.id}
@@ -34,7 +34,7 @@ const OrderCart = () => {
 
     return (
         <div className=' py-5  border border-white flex flex-col gap-5 w-full'>
-            {providedData.cart.length != 0 ? (
+            {checkOut.length != 0 ? (
                 dispCartItems
             ) : (
                 <div className='flex items-center text-center justify-center h-[60px]'>

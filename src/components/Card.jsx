@@ -29,7 +29,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
-        window.location.reload();
+        providedData.getWishList;
     };
 
     // filters out the data from the favorites array
@@ -40,7 +40,8 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
-        window.location.reload();
+
+        providedData.getCartList;
     };
 
     const handleAddToRecentlyViewed = async () => {
@@ -50,7 +51,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
-        window.location.reload();
+        providedData.getRecentlyViewedList;
     };
 
     return (

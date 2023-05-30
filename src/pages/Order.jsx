@@ -10,7 +10,14 @@ const Order = () => {
     const [paymentEmail, setPaymentEmail] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
     const { id } = useParams();
-    const details = providedData.store.filter((item) => item.id == id);
+
+    const buyNow = providedData.store.filter((item) => item.id == id);
+    const purchase =
+        id === "buyAll" ? (
+            <OrderCart checkOut={providedData.cart} />
+        ) : (
+            <OrderCart checkOut={buyNow} />
+        );
     return (
         <div>
             <Nav back={true} />
@@ -20,7 +27,7 @@ const Order = () => {
                         <p className='flex flex-col font-bold text-3xl px-5'>
                             review item and shipping
                         </p>
-                        <OrderCart single={details} />
+                        {purchase}
                     </div>
                     <div className='border border-1 p-5 flex flex-col gap-5'>
                         <p className='flex flex-col font-bold text-3xl px-5'>

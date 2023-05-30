@@ -34,6 +34,7 @@ const Product = () => {
         } catch (err) {
             console.error(err);
         }
+        providedData.getCartList;
     };
 
     // this functions prevents the rating from being calculated before the details var is assigned

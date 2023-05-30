@@ -24,61 +24,62 @@ function App() {
     const wishCollectionRef = collection(db, "wishlist");
     const productCollectionRef = collection(db, "products");
     const recentlyViewedRef = collection(db, "recentlyviewed");
+
+    const getProductList = async () => {
+        try {
+            const data = await getDocs(productCollectionRef);
+            const filteredData = data.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id,
+            }));
+            setStore(filteredData);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const getCartList = async () => {
+        try {
+            const data = await getDocs(cartCollectionRef);
+            const filteredData = data.docs.map((doc) => ({
+                ...doc.data(),
+                cartId: doc.id,
+            }));
+            setCart(filteredData);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const getWishList = async () => {
+        try {
+            const data = await getDocs(wishCollectionRef);
+            const filteredData = data.docs.map((doc) => ({
+                ...doc.data(),
+                wishlistId: doc.id,
+            }));
+            setWishlist(filteredData);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const getRecentlyViewedList = async () => {
+        try {
+            const data = await getDocs(recentlyViewedRef);
+            const filteredData = data.docs.map((doc) => ({
+                ...doc.data(),
+                recentlyViewedId: doc.id,
+            }));
+            setRecentlyViewed(filteredData);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     useEffect(() => {
-        const getProductList = async () => {
-            try {
-                const data = await getDocs(productCollectionRef);
-                const filteredData = data.docs.map((doc) => ({
-                    ...doc.data(),
-                    id: doc.id,
-                }));
-                setStore(filteredData);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-        const getCartList = async () => {
-            try {
-                const data = await getDocs(cartCollectionRef);
-                const filteredData = data.docs.map((doc) => ({
-                    ...doc.data(),
-                    cartId: doc.id,
-                }));
-                setCart(filteredData);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-        const getWishList = async () => {
-            try {
-                const data = await getDocs(wishCollectionRef);
-                const filteredData = data.docs.map((doc) => ({
-                    ...doc.data(),
-                    wishlistId: doc.id,
-                }));
-                setWishlist(filteredData);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-        const getRecentlyViewedList = async () => {
-            try {
-                const data = await getDocs(recentlyViewedRef);
-                const filteredData = data.docs.map((doc) => ({
-                    ...doc.data(),
-                    recentlyViewedId: doc.id,
-                }));
-                setRecentlyViewed(filteredData);
-            } catch (err) {
-                console.error(err);
-            }
-        };
         getProductList();
         getCartList();
         getWishList();
         getRecentlyViewedList();
-
-        console.log("a");
+        return;
     }, []);
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -137,6 +138,10 @@ function App() {
                 setPaginationNumber,
                 totalPrice,
                 setTotalPrice,
+                getProductList,
+                getCartList,
+                getWishList,
+                getRecentlyViewedList,
             }}
         >
             <BrowserRouter>

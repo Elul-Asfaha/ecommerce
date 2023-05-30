@@ -8,13 +8,12 @@ import { db } from "../config/firebase";
 const Cart = () => {
     const providedData = useContext(ContextProvider);
     const cartCollectionRef = collection(db, "cart");
-    const [cart, setCart] = useState([]);
 
     // removes the item selected from the cart collection in the firebase databse
     const handleRemoveCartItem = async (cartItemId) => {
         const cartCollectionRef = doc(db, "cart", cartItemId);
         await deleteDoc(cartCollectionRef);
-        window.location.reload();
+        providedData.getCartList;
     };
 
     const dispCartItems = providedData.cart.map((items) => (
@@ -90,6 +89,15 @@ const Cart = () => {
                     <div className='flex items-center text-center justify-center h-[60px]'>
                         <p className='font-bold'>Such empty? Much Wow!</p>
                     </div>
+                )}
+
+                {providedData.cart.length != 0 && (
+                    <Link
+                        to={`/order/${"buyAll"}`}
+                        className='text-center mx-auto w-fit px-4 py-2 rounded-md'
+                    >
+                        Buy All
+                    </Link>
                 )}
             </div>
         </div>

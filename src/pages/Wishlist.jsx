@@ -14,7 +14,7 @@ const Wishlist = () => {
         } catch (err) {
             console.error(err);
         }
-        window.location.reload();
+        providedData.getWishList;
     };
 
     const dispCartItems = providedData.wishlist.map((items) => (
