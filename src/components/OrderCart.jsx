@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import RatingComponent from "./Ratingcomponent";
 
 const OrderCart = ({ checkOut }) => {
-    console.log(checkOut);
     const providedData = useContext(ContextProvider);
     const dispCartItems = checkOut.map((items) => (
         <Link

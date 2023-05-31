@@ -8,9 +8,6 @@ import RatingComponent from "./Ratingcomponent";
 const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
     const providedData = useContext(ContextProvider);
     const [toggleLike, setToggleLike] = useState(false);
-    const cartCollectionRef = collection(db, "cart");
-    const wishlistCollectionRef = collection(db, "wishlist");
-
     const cardDetails = {
         color: color,
         id: id,
@@ -24,24 +21,28 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
 
     //adds the data to the favs database then sets a new fav array to be mapped through
     const handleSubmitFav = async () => {
+        const wishlistCollectionRef = collection(db, "wishlist");
+
         try {
             await addDoc(wishlistCollectionRef, cardDetails);
         } catch (err) {
             console.error(err);
         }
-        providedData.getWishList;
+        location.reload();
     };
 
     // filters out the data from the favorites array
 
     const handleAddToCart = async () => {
+        const cartCollectionRef = collection(db, "cart");
+
         try {
             await addDoc(cartCollectionRef, cardDetails);
         } catch (err) {
             console.error(err);
         }
 
-        providedData.getCartList;
+        location.reload();
     };
 
     const handleAddToRecentlyViewed = async () => {
@@ -51,7 +52,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
-        providedData.getRecentlyViewedList;
+        location.reload();
     };
 
     return (
@@ -67,7 +68,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                         src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg w-full sm:min-w-full md:w-full h-[500px] sm:min-h-[209px]'
+                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full min-h-[209px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>

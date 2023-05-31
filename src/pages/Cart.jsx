@@ -11,7 +11,7 @@ const Cart = () => {
     const handleRemoveCartItem = async (cartItemId) => {
         const cartCollectionRef = doc(db, "cart", cartItemId);
         await deleteDoc(cartCollectionRef);
-        providedData.getCartList;
+        location.reload();
     };
 
     const dispCartItems = providedData.cart.map((items) => (

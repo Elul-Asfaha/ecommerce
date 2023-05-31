@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import OrderCart from "../components/OrderCart";
 import Nav from "../components/Nav";
 import { ContextProvider } from "../App";
@@ -18,6 +18,16 @@ const Order = () => {
         ) : (
             <OrderCart checkOut={buyNow} />
         );
+    const [cartTotal, setCartTotal] = useState(0);
+
+    useEffect(() => {
+        id === "buyAll"
+            ? providedData.cart.map((items) =>
+                  setCartTotal((prev) => (prev += items.price))
+              )
+            : setCartTotal(buyNow[0].price);
+        console.log(cartTotal);
+    }, []);
     return (
         <div>
             <Nav back={true} />
@@ -57,7 +67,7 @@ const Order = () => {
                     <form className='flex flex-col gap-2'>
                         <p className='text-3xl'>order summery</p>
                         <div>
-                            <p>total:</p>
+                            <p>total:{cartTotal && cartTotal}</p>
                             <p></p>
                         </div>
                         <p className='font-bold'>payment details</p>

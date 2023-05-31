@@ -138,10 +138,6 @@ function App() {
                 setPaginationNumber,
                 totalPrice,
                 setTotalPrice,
-                getProductList,
-                getCartList,
-                getWishList,
-                getRecentlyViewedList,
             }}
         >
             <BrowserRouter>
