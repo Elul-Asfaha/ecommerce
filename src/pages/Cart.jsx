@@ -7,8 +7,8 @@ import { db } from "../config/firebase";
 import RatingComponent from "../components/Ratingcomponent";
 const Cart = () => {
     const providedData = useContext(ContextProvider);
-    // removes the item selected from the cart collection in the firebase databse
     const handleRemoveCartItem = async (cartItemId) => {
+        // removes the item selected from the cart collection in the firebase databse
         const cartCollectionRef = doc(db, "cart", cartItemId);
         await deleteDoc(cartCollectionRef);
         location.reload();
@@ -54,6 +54,18 @@ const Cart = () => {
     return (
         <div className='flex flex-col gap-5 '>
             <Nav back={true} />
+
+            {providedData.cart.length != 0 && (
+                <div className='border border-black px-5'>
+                    <Link to={`/order/${"buyAll"}`}>
+                        <p className='bg-[#FCF0E4] py-2 w-full text-center rounded-lg'>
+                            Proceed to Checkout ({providedData.cart.length}{" "}
+                            items)
+                        </p>
+                    </Link>
+                </div>
+            )}
+
             <div className='flex flex-col gap-5 mx-auto px-5'>
                 {providedData.cart.length != 0 ? (
                     dispCartItems
@@ -61,15 +73,6 @@ const Cart = () => {
                     <div className='flex items-center text-center justify-center h-[60px]'>
                         <p className='font-bold'>Such empty? Much Wow!</p>
                     </div>
-                )}
-
-                {providedData.cart.length != 0 && (
-                    <Link
-                        to={`/order/${"buyAll"}`}
-                        className='text-center mx-auto w-fit px-4 py-2 rounded-md'
-                    >
-                        Buy All
-                    </Link>
                 )}
             </div>
         </div>

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import OrderCart from "../components/OrderCart";
-import Nav from "../components/Nav";
 import { ContextProvider } from "../App";
 import { useParams } from "react-router-dom";
 
@@ -30,7 +29,10 @@ const Order = () => {
     }, []);
     return (
         <div>
-            <Nav back={true} />
+            <div>
+                Checkout (
+                <span className='text-blue-700 '>{purchase.length} items</span>)
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-2 py-5 gap-5 capitalize md:px-[10%]'>
                 <div className='grid grid-row-2 gap-[60px]'>
                     <div className='border border-1 py-5'>

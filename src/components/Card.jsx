@@ -1,13 +1,9 @@
-import { useContext, useState } from "react";
 import ReactIcons from "./ReactIconsImport";
-import { ContextProvider } from "../App";
 import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import RatingComponent from "./Ratingcomponent";
 const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
-    const providedData = useContext(ContextProvider);
-    const [toggleLike, setToggleLike] = useState(false);
     const cardDetails = {
         color: color,
         id: id,
@@ -57,18 +53,18 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
 
     return (
         <div
-            className={`relative min-w-[320px] sm:min-w-fit sm:w-[40%] md:max-w-[330px] flex flex-col gap-1 capitalize`}
+            className={`relative min-w-full sm:min-w-fit sm:w-[40%] md:max-w-[330px] flex flex-col gap-1 capitalize`}
         >
             <Link
                 to={`/product/${id}`}
                 onClick={() => handleAddToRecentlyViewed()}
             >
-                <div className='relative flex max-w-[370px]'>
+                <div className='relative flex max-w-sm'>
                     <img
                         src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full min-h-[209px]'
+                        className='bg-gray-300 cover rounded-lg w-full min-h-[200px]'
                     />
                 </div>
                 <div className='flex flex-col gap-1'>
@@ -99,4 +95,5 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         </div>
     );
 };
+
 export default Card;
