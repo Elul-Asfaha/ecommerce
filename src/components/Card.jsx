@@ -52,43 +52,43 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
     };
 
     return (
-        <div
-            className={`relative min-w-full sm:min-w-fit sm:w-[40%] md:max-w-[330px] flex flex-col gap-1 capitalize`}
-        >
+        <div className='relative min-w-[310px] max-w-sm shadow-md pb-2'>
             <Link
                 to={`/product/${id}`}
-                onClick={() => handleAddToRecentlyViewed()}
+                // onClick={() => handleAddToRecentlyViewed()}
+                className=' flex flex-col gap-1'
             >
-                <div className='relative flex max-w-sm'>
+                <div className='rounded-t-lg overflow-hidden bg-gray-300'>
                     <img
                         src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg w-full min-h-[200px]'
+                        className='min-h-[200px]'
                     />
                 </div>
-                <div className='flex flex-col gap-1'>
-                    <div className='flex justify-between font-bold'>
+                <div className='px-1'>
+                    <div className='flex justify-between font-semibold'>
                         <p>wireless earbuds, ipx8</p>
-                        <p>$ {price}</p>
+                        <p>${price}</p>
                     </div>
                     <p>wired sterio headset with mic</p>
-                    <div className='flex items-center gap-1 text-xl font-bold'>
+                    <div className='flex gap-2 items-center'>
                         <RatingComponent rating={rating} />
-                        <p>({reviews})</p>
+                        <p className='font-semibold'>({reviews})</p>
                     </div>
                 </div>
             </Link>
             <button
                 onClick={() => handleAddToCart()}
-                className='py-1 px-3 border hover:text-white border-none outline outline-1 outline-black hover:outline-green-700 active:outline-green-900  hover:bg-green-700 active:bg-green-900 border-black w-fit rounded-full'
+                className='ring ring-green-800 py-1 px-3 m-1 ms-2 rounded-xl flex gap-2 items-center w-fit active:animate-ping'
             >
-                add to cart
+                <ReactIcons.AiOutlineShoppingCart className='text-2xl' />
+                <span>add to cart</span>
             </button>
 
             <button
-                className='absolute flex justify-center items-center  right-3 top-3 p-1 text-white rounded-full text-3xl cursor-pointer hover:text-orange-500'
                 onClick={() => handleSubmitFav()}
+                className='absolute top-3 right-3 text-3xl text-white hover:text-gray-200 active:text-red-700'
             >
                 <ReactIcons.AiOutlineHeart />
             </button>

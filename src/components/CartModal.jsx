@@ -33,7 +33,7 @@ const CartModal = () => {
     ));
 
     return (
-        <div className='hidden md:flex bg-white shadow-xl py-5 fixed overflow-y-scroll border border-white top-[5%] right-5 flex-col gap-5 w-[600px] max-h-[800px] rounded-xl'>
+        <div className='hidden md:flex bg-white shadow-xl py-5 fixed overflow-y-scroll scrollbar-hide border border-white top-[5%] right-5 flex-col gap-5 w-[600px] max-h-[800px] rounded-xl'>
             {providedData.cart.length != 0 ? (
                 dispCartItems
             ) : (

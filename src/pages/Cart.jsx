@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import RatingComponent from "../components/Ratingcomponent";
+import ReactIcons from "../components/ReactIconsImport";
 const Cart = () => {
     const providedData = useContext(ContextProvider);
     const handleRemoveCartItem = async (cartItemId) => {
@@ -17,19 +18,19 @@ const Cart = () => {
     const dispCartItems = providedData.cart.map((items) => (
         <div
             key={items.cartId}
-            className='flex flex-col md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
+            className='flex flex-col md:flex-row md:max-w-[800px] shadow-lg gap-4 rounded-lg md:pe-5 justify-between'
         >
             <Link
                 to={`/product/${items.id}`}
-                className='flex flex-col md:flex-row justify-between items-center gap-5 md:px-5'
+                className='flex flex-col md:flex-row justify-between items-center gap-5'
                 onClick={() => providedData.setCartToggle(false)}
             >
-                <div className='relative flex'>
+                <div className='relative flex bg-gray-400'>
                     <img
                         src={items.image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full max-w-[350px] min-h-[209px]'
+                        className='bg-gray-300 cover min-w-[320px] sm:w-full max-w-[350px] min-h-[209px]'
                     />
                 </div>
                 <div className='flex md:flex-1 flex-col text-2xl'>
@@ -44,29 +45,32 @@ const Cart = () => {
                 </div>
             </Link>
             <button
-                className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%] active:bg-green-800'
+                className='text-center p-1 mx-auto font-bold text-3xl md:mx-0 rounded-xl w-fit active:bg-green-800'
                 onClick={() => handleRemoveCartItem(items.cartId)}
             >
-                Remove
+                <ReactIcons.BsTrash3 />
             </button>
         </div>
     ));
     return (
-        <div className='flex flex-col gap-5 '>
+        <div className='flex flex-col gap-5 pb-[100px]'>
             <Nav back={true} />
 
             {providedData.cart.length != 0 && (
-                <div className='border border-black px-5'>
+                <div className='radius-lg shadow-md w-full sm:max-w-sm sm:mx-auto'>
                     <Link to={`/order/${"buyAll"}`}>
-                        <p className='bg-[#FCF0E4] py-2 w-full text-center rounded-lg'>
-                            Proceed to Checkout ({providedData.cart.length}{" "}
-                            items)
+                        <p className='bg-[#FCF0E4]  px-5 py-2 w-full text-center'>
+                            Proceed to Checkout (
+                            <span className='text-blue-700'>
+                                {providedData.cart.length} items
+                            </span>
+                            )
                         </p>
                     </Link>
                 </div>
             )}
 
-            <div className='flex flex-col gap-5 mx-auto px-5'>
+            <div className='flex flex-col gap-5 mx-auto'>
                 {providedData.cart.length != 0 ? (
                     dispCartItems
                 ) : (

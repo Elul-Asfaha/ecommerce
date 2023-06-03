@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import { db } from "../config/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import RatingComponent from "../components/Ratingcomponent";
+import ReactIcons from "../components/ReactIconsImport";
 const Wishlist = () => {
     const providedData = useContext(ContextProvider);
     const handleRemoveWishlist = async (wishId) => {
@@ -20,19 +21,19 @@ const Wishlist = () => {
     const dispCartItems = providedData.wishlist.map((items) => (
         <div
             key={items.wishlistId}
-            className='flex flex-col md:max-w-[800px] shadow-lg gap-4 pb-5 rounded-lg'
+            className='flex flex-col md:flex-row md:max-w-[800px] shadow-lg gap-4 rounded-lg  md:pe-5 md:justify-between'
         >
             <Link
                 to={`/product/${items.id}`}
-                className='flex flex-col md:flex-row justify-between items-center gap-5 md:px-5'
+                className='flex flex-col md:flex-row justify-between items-center gap-5'
                 onClick={() => providedData.setCartToggle(false)}
             >
-                <div className='relative flex'>
+                <div className='relative flex bg-gray-400'>
                     <img
                         src={items.image[0]}
                         alt=''
                         loading='lazy'
-                        className='bg-gray-300 cover rounded-lg min-w-[320px] sm:min-w-full md:w-full max-w-[350px] min-h-[209px]'
+                        className='bg-gray-300 cover min-w-[320px] sm:w-full max-w-[350px] min-h-[209px]'
                     />
                 </div>
                 <div className='flex md:flex-1 flex-col text-2xl'>
@@ -48,17 +49,17 @@ const Wishlist = () => {
                 </div>
             </Link>
             <button
-                className='border border-black text-center p-1 mx-auto font-bold rounded-xl w-[90%] active:bg-green-800'
+                className='text-center p-1 mx-auto md:mx-0 font-bold text-3xl rounded-xl w-fit active:bg-green-800'
                 onClick={() => handleRemoveWishlist(items.wishlistId)}
             >
-                Remove
+                <ReactIcons.TiCancel />
             </button>
         </div>
     ));
     return (
-        <div className='flex flex-col gap-5 '>
+        <div className='flex flex-col gap-5 pb-[100px]'>
             <Nav back={true} />
-            <div className='flex flex-col gap-5 mx-auto  px-5'>
+            <div className='flex flex-col gap-5 mx-auto'>
                 {providedData.wishlist.length != 0 ? (
                     dispCartItems
                 ) : (
