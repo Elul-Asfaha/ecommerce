@@ -55,7 +55,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         <div className='relative min-w-[310px] max-w-sm shadow-md pb-2'>
             <Link
                 to={`/product/${id}`}
-                // onClick={() => handleAddToRecentlyViewed()}
+                onClick={() => handleAddToRecentlyViewed()}
                 className=' flex flex-col gap-1'
             >
                 <div className='rounded-t-lg overflow-hidden bg-gray-300'>

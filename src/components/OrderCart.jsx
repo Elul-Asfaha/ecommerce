@@ -9,25 +9,27 @@ const OrderCart = ({ checkOut }) => {
         <Link
             to={`/product/${items.id}`}
             key={items.id}
-            className='flex flex-col gap-5 md:flex-col justify-between items-center px-5'
+            className='flex flex-col md:flex-row justify-between items-center gap-5'
             onClick={() => providedData.setCartToggle(false)}
         >
-            <div className='flex sm:h-[100px]'>
+            <div className='relative flex bg-gray-400'>
                 <img
                     src={items.image[0]}
                     alt=''
                     loading='lazy'
-                    className='cover rounded-lg'
+                    className='bg-gray-300 cover min-w-[320px] sm:w-full max-w-[350px] min-h-[209px]'
                 />
             </div>
-            <div className='flex flex-col text-2xl'>
+            <div className='flex md:flex-1 flex-col text-2xl'>
                 <p className='text-center'>{items.model_name}</p>
                 <div className='flex items-center justify-center gap-1'>
                     <RatingComponent rating={items.rating} />
                     <p>({items.reviews && items.reviews})</p>
                 </div>
             </div>
-            <div className='font-bold'>${items.price}</div>
+            <div className='font-bold text-center md:flex-1'>
+                ${items.price}
+            </div>
         </Link>
     ));
 

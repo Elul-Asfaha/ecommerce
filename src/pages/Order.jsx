@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import OrderCart from "../components/OrderCart";
 import { ContextProvider } from "../App";
 import { useParams } from "react-router-dom";
-
+import Assets from "../assets/Assets";
 const Order = () => {
     const providedData = useContext(ContextProvider);
     const [paymentNotif, setPaymentNotif] = useState(0);
@@ -41,6 +41,72 @@ const Order = () => {
                         </p>
                         {purchase}
                     </div>
+                </div>
+                <div className='flex flex-col gap-[20px]'>
+                    <div className='flex flex-col p-5 border border-1 h-fit'>
+                        <form className='flex flex-col gap-2'>
+                            <p className='text-3xl'>order summery</p>
+                            <div>
+                                <p className='font-bold'>
+                                    total: ${cartTotal && Number(cartTotal)}
+                                </p>
+                                <p></p>
+                            </div>
+                            <p className='font-bold'>payment details</p>
+                            <fieldset>
+                                <div className='flex gap-2'>
+                                    <input
+                                        name='paymentNotif'
+                                        type='radio'
+                                        value='0'
+                                        onChange={(e) =>
+                                            setPaymentNotif(e.target.value)
+                                        }
+                                    />
+                                    <label htmlFor=''>Email on Delivery</label>
+                                </div>
+                                <div className='flex gap-2'>
+                                    <input
+                                        name='paymentNotif'
+                                        type='radio'
+                                        value='1'
+                                        onChange={(e) =>
+                                            setPaymentNotif(e.target.value)
+                                        }
+                                    />
+                                    <label htmlFor=''>payment</label>
+                                </div>
+                            </fieldset>
+                            <div className='flex gap-5'>
+                                <img
+                                    src={Assets.paypal}
+                                    alt=''
+                                    className='h-[40px] w-[60px] container'
+                                />
+                                <img
+                                    src={Assets.mastercard}
+                                    alt=''
+                                    className='h-[40px] w-[60px] container'
+                                />
+                                <img
+                                    src={Assets.prime}
+                                    alt=''
+                                    className='h-[40px] w-[60px] container'
+                                />
+                            </div>
+                            <div className='border bg-gray-200 '>
+                                <input
+                                    type='email'
+                                    value={paymentEmail}
+                                    onChange={(e) =>
+                                        setPaymentEmail(e.target.value)
+                                    }
+                                    placeholder='Email'
+                                    className='outline-none w-full p-1'
+                                />
+                            </div>
+                        </form>
+                    </div>
                     <div className='border border-1 p-5 flex flex-col gap-5'>
                         <p className='flex flex-col font-bold text-3xl px-5'>
                             delivery information
@@ -64,56 +130,6 @@ const Order = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className='flex flex-col p-5 border border-1 h-fit'>
-                    <form className='flex flex-col gap-2'>
-                        <p className='text-3xl'>order summery</p>
-                        <div>
-                            <p>total:{cartTotal && cartTotal}</p>
-                            <p></p>
-                        </div>
-                        <p className='font-bold'>payment details</p>
-                        <fieldset>
-                            <div className='flex gap-2'>
-                                <input
-                                    name='paymentNotif'
-                                    type='radio'
-                                    value='0'
-                                    onChange={(e) =>
-                                        setPaymentNotif(e.target.value)
-                                    }
-                                />
-                                <label htmlFor=''>Email on Delivery</label>
-                            </div>
-                            <div className='flex gap-2'>
-                                <input
-                                    name='paymentNotif'
-                                    type='radio'
-                                    value='1'
-                                    onChange={(e) =>
-                                        setPaymentNotif(e.target.value)
-                                    }
-                                />
-                                <label htmlFor=''>payment</label>
-                            </div>
-                        </fieldset>
-                        <div className='flex'>
-                            <div className='px-3 py-2'>paypal</div>
-                            <div className='px-3 py-2'>amazon</div>
-                            <div className='px-3 py-2'>mastercard</div>
-                        </div>
-                        <div className='border bg-gray-200 '>
-                            <input
-                                type='email'
-                                value={paymentEmail}
-                                onChange={(e) =>
-                                    setPaymentEmail(e.target.value)
-                                }
-                                placeholder='Email'
-                                className='outline-none w-full p-1'
-                            />
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
