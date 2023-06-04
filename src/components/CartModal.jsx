@@ -33,14 +33,16 @@ const CartModal = () => {
     ));
 
     return (
-        <div className='hidden md:flex bg-white shadow-xl py-5 fixed overflow-y-scroll scrollbar-hide border border-white top-[5%] right-5 flex-col gap-5 w-[600px] max-h-[800px] rounded-xl'>
-            {providedData.cart.length != 0 ? (
-                dispCartItems
-            ) : (
-                <div className='flex items-center text-center justify-center h-[60px]'>
-                    <p className='font-bold'>Such empty? Much Wow!</p>
-                </div>
-            )}
+        <div className='hidden md:flex flex-col justify-between bg-white shadow-xl py-5 fixed overflow-y-scroll scrollbar-hide border border-white top-[5%] bottom-[5%] right-5 w-[500px] max-h-[800px] rounded-xl'>
+            <div className='flex flex-col gap-5'>
+                {providedData.cart.length != 0 ? (
+                    dispCartItems
+                ) : (
+                    <div className='flex items-center text-center justify-center h-[60px]'>
+                        <p className='font-bold'>Such empty? Much Wow!</p>
+                    </div>
+                )}
+            </div>
             <Link
                 to='/cart'
                 onClick={() => providedData.setCartToggle(false)}

@@ -18,7 +18,7 @@ const Cart = () => {
     const dispCartItems = providedData.cart.map((items) => (
         <div
             key={items.cartId}
-            className='flex flex-col md:flex-row md:max-w-[800px] shadow-lg gap-4 rounded-lg md:pe-5 justify-between'
+            className='flex flex-col md:flex-row md:max-w-[800px] shadow-lg gap-4 rounded-lg md:pe-5 justify-between items-center'
         >
             <Link
                 to={`/product/${items.id}`}
@@ -45,7 +45,7 @@ const Cart = () => {
                 </div>
             </Link>
             <button
-                className='text-center p-1 mx-auto font-bold text-3xl md:mx-0 rounded-xl w-fit active:bg-green-800'
+                className='text-center p-1 mx-auto font-bold text-3xl md:mx-0 rounded-xl w-fit h-fit active:bg-green-800'
                 onClick={() => handleRemoveCartItem(items.cartId)}
             >
                 <ReactIcons.BsTrash3 />
@@ -55,29 +55,33 @@ const Cart = () => {
     return (
         <div className='flex flex-col gap-5 pb-[100px]'>
             <Nav back={true} />
-
-            {providedData.cart.length != 0 && (
-                <div className='radius-lg shadow-md w-full sm:max-w-sm sm:mx-auto'>
-                    <Link to={`/order/${"buyAll"}`}>
-                        <p className='bg-[#FCF0E4]  px-5 py-2 w-full text-center'>
-                            Proceed to Checkout (
-                            <span className='text-blue-700'>
-                                {providedData.cart.length} items
-                            </span>
-                            )
-                        </p>
-                    </Link>
-                </div>
-            )}
-
-            <div className='flex flex-col gap-5 mx-auto'>
-                {providedData.cart.length != 0 ? (
-                    dispCartItems
-                ) : (
-                    <div className='flex items-center text-center justify-center h-[60px]'>
-                        <p className='font-bold'>Such empty? Much Wow!</p>
+            <div
+                className='flex flex-col gap-5'
+                onClick={() => providedData.setCartToggle(false)}
+            >
+                {providedData.cart.length != 0 && (
+                    <div className='radius-lg shadow-md w-full sm:max-w-sm sm:mx-auto'>
+                        <Link to={`/order/${"buyAll"}`}>
+                            <p className='bg-[#FCF0E4]  px-5 py-2 w-full text-center'>
+                                Proceed to Checkout (
+                                <span className='text-blue-700'>
+                                    {providedData.cart.length} items
+                                </span>
+                                )
+                            </p>
+                        </Link>
                     </div>
                 )}
+
+                <div className='flex flex-col gap-5 mx-auto'>
+                    {providedData.cart.length != 0 ? (
+                        dispCartItems
+                    ) : (
+                        <div className='flex items-center text-center justify-center h-[60px]'>
+                            <p className='font-bold'>Such empty? Much Wow!</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

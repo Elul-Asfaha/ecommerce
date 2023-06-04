@@ -33,8 +33,8 @@ const Order = () => {
                 Checkout (
                 <span className='text-blue-700 '>{purchase.length} items</span>)
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 py-5 gap-5 capitalize md:px-[10%]'>
-                <div className='grid grid-row-2 gap-[60px]'>
+            <div className='grid grid-cols-1 md:grid-cols-3  py-5 gap-5 capitalize md:px-[5%]'>
+                <div className='grid grid-row-2 gap-[60px] col-span-2'>
                     <div className='border border-1 py-5'>
                         <p className='flex flex-col font-bold text-3xl px-5'>
                             review item and shipping

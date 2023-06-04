@@ -21,7 +21,7 @@ const Wishlist = () => {
     const dispCartItems = providedData.wishlist.map((items) => (
         <div
             key={items.wishlistId}
-            className='flex flex-col md:flex-row md:max-w-[800px] shadow-lg gap-4 rounded-lg  md:pe-5 md:justify-between'
+            className='flex flex-col md:flex-row md:max-w-[800px] shadow-lg gap-4 rounded-lg  md:pe-5 md:justify-between items-center'
         >
             <Link
                 to={`/product/${items.id}`}
@@ -49,7 +49,7 @@ const Wishlist = () => {
                 </div>
             </Link>
             <button
-                className='text-center p-1 mx-auto md:mx-0 font-bold text-3xl rounded-xl w-fit active:bg-green-800'
+                className='text-center p-1 mx-auto md:mx-0 font-bold text-3xl rounded-xl w-fit h-fit active:bg-green-800'
                 onClick={() => handleRemoveWishlist(items.wishlistId)}
             >
                 <ReactIcons.TiCancel />
@@ -59,14 +59,19 @@ const Wishlist = () => {
     return (
         <div className='flex flex-col gap-5 pb-[100px]'>
             <Nav back={true} />
-            <div className='flex flex-col gap-5 mx-auto'>
-                {providedData.wishlist.length != 0 ? (
-                    dispCartItems
-                ) : (
-                    <div className='flex items-center text-center justify-center h-[60px]'>
-                        <p className='font-bold'>Such empty? Much Wow!</p>
-                    </div>
-                )}
+            <div
+                className='flex flex-col gap-5'
+                onClick={() => providedData.setCartToggle(false)}
+            >
+                <div className='flex flex-col gap-5 mx-auto'>
+                    {providedData.wishlist.length != 0 ? (
+                        dispCartItems
+                    ) : (
+                        <div className='flex items-center text-center justify-center h-[60px]'>
+                            <p className='font-bold'>Such empty? Much Wow!</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

@@ -9,15 +9,15 @@ const OrderCart = ({ checkOut }) => {
         <Link
             to={`/product/${items.id}`}
             key={items.id}
-            className='flex flex-col md:flex-row justify-between items-center gap-5'
+            className='flex flex-col lg:flex-row justify-between items-center gap-5'
             onClick={() => providedData.setCartToggle(false)}
         >
-            <div className='relative flex bg-gray-400'>
+            <div className='relative flex bg-gray-400 w-[320px] min-h-[209px]'>
                 <img
                     src={items.image[0]}
                     alt=''
                     loading='lazy'
-                    className='bg-gray-300 cover min-w-[320px] sm:w-full max-w-[350px] min-h-[209px]'
+                    className='bg-gray-300 cover'
                 />
             </div>
             <div className='flex md:flex-1 flex-col text-2xl'>
@@ -34,7 +34,7 @@ const OrderCart = ({ checkOut }) => {
     ));
 
     return (
-        <div className=' py-5  border border-white flex flex-col gap-5 w-full'>
+        <div className=' py-5 border border-white flex flex-col gap-5 w-full'>
             {checkOut.length != 0 ? (
                 dispCartItems
             ) : (

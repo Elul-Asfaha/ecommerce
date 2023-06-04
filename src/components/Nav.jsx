@@ -40,11 +40,11 @@ const Nav = ({ back }) => {
                     <ReactIcons.AiOutlineSearch className='text-xl' />
                 </div>
             </div>{" "}
-            <div className='hidden relative md:flex items-center  gap-4'>
-                <div
-                    className='relative cursor-pointer'
-                    onClick={providedData.handleCartToggler}
-                >
+            <div
+                className='hidden relative md:flex items-center cursor-pointer gap-4'
+                onClick={providedData.handleCartToggler}
+            >
+                <div className='relative'>
                     <ReactIcons.AiOutlineShoppingCart className='text-4xl' />
                     <div className='absolute inset-y-0 -top-3 -right-3 bg-orange-300 text-center text-lg w-[30px] h-[30px] rounded-full '>
                         {providedData.cart.length}
