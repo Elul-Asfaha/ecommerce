@@ -36,15 +36,15 @@ const Order = () => {
             <div className='grid grid-cols-1 md:grid-cols-3  py-5 gap-5 capitalize md:px-[5%]'>
                 <div className='grid grid-row-2 gap-[60px] col-span-2'>
                     <div className='border border-1 py-5'>
-                        <p className='flex flex-col font-bold text-3xl px-5'>
-                            review item and shipping
+                        <p className='flex flex-col text-center font-bold text-3xl px-5'>
+                            review your items
                         </p>
                         {purchase}
                     </div>
                 </div>
                 <div className='flex flex-col gap-[20px]'>
                     <div className='flex flex-col p-5 border border-1 h-fit'>
-                        <form className='flex flex-col gap-2'>
+                        <form className='flex flex-col gap-2 px-5 md:px-5 '>
                             <p className='text-3xl'>order summery</p>
                             <div>
                                 <p className='font-bold'>
@@ -107,11 +107,11 @@ const Order = () => {
                             </div>
                         </form>
                     </div>
-                    <div className='border border-1 p-5 flex flex-col gap-5'>
-                        <p className='flex flex-col font-bold text-3xl px-5'>
+                    <div className='border border-1 p-5 flex flex-col gap-5 px-10 md:px-5'>
+                        <p className='flex flex-col text-3xl px-5'>
                             delivery information
                         </p>
-                        <div className='flex flex-col gap-5'>
+                        <div className='flex flex-col gap-3'>
                             <div className='flex'>
                                 <div className='w-fit pe-5'>Name:</div>
                                 <div>elul</div>
