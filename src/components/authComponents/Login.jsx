@@ -22,42 +22,46 @@ const Login = () => {
         setPassword("");
     };
     return (
-        <div>
+        <div className='flex flex-col gap-5 '>
+            <div>
+                <p className='text-3xl text-bold text-center text-green-600'>
+                    Welcome back
+                </p>
+                <p className='text-center text-gray-500'>
+                    Please enter your details
+                </p>
+            </div>
             <form onSubmit={handleLogin} className='grid gap-5'>
-                <div className='flex items-center justify-between'>
-                    <label
-                        htmlFor='userEmail'
-                        className='flex-1 text-right pe-5'
-                    >
-                        Email:
+                <div className='flex flex-col gap-1 justify-between'>
+                    <label htmlFor='userEmail' className='flex-1 pe-5'>
+                        Email :
                     </label>
                     <input
                         type='email'
                         name='userEmail'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        className='outline-none min-w-[320px] border-2 border-gray-200 rounded-md px-3 py-1  flex-1'
+                        placeholder='Enter your email'
                         required
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
                     />
                 </div>
-                <div className='flex items-center justify-between'>
-                    <label
-                        htmlFor='userPassword'
-                        className='flex-1 text-right pe-5'
-                    >
-                        Password:
+                <div className='flex flex-col gap-1 justify-between'>
+                    <label htmlFor='userPassword' className='flex-1 pe-5'>
+                        Password :
                     </label>
                     <input
                         type='password'
                         name='userPassword'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
+                        className='outline-none min-w-[320px] border-2 border-gray-200 rounded-md px-3 py-1  flex-1'
+                        placeholder='enter your password'
                         required
                     />
                 </div>
-                <button className='outline-none ring-2 ring-black mx-auto rounded-md w-fit px-4 py-1'>
-                    Login
+                <button className='outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'>
+                    Sign in
                 </button>
             </form>
         </div>

@@ -1,18 +1,29 @@
 import { createContext, useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+//pages
+import Cart from "./pages/Cart.jsx";
+import Authentication from "./pages/Authentication.jsx";
 import Product from "./pages/Product.jsx";
 import Home from "./pages/Home.jsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Order from "./pages/Order.jsx";
+import Wishlist from "./pages/Wishlist.jsx";
+
+//components
 import BurgerMenu from "./components/BurgerMenu.jsx";
 import Login from "./components/authComponents/Login";
 import SignUp from "./components/authComponents/SignUp";
 import CartModal from "./components/CartModal.jsx";
-import Cart from "./pages/Cart.jsx";
-import Wishlist from "./pages/Wishlist.jsx";
-import Order from "./pages/Order.jsx";
+
+import data from "./ecommerce.json";
+
+//context provider
+export const ContextProvider = createContext();
+
+//firebase
 import { db } from "./config/firebase.js";
 import { getDocs, collection } from "firebase/firestore";
-export const ContextProvider = createContext(); //context provider
-import Authentication from "./pages/Authentication.jsx";
+
 function App() {
     const [user, setUser] = useState();
     const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -23,6 +34,9 @@ function App() {
     const [cartToggle, setCartToggle] = useState(false);
     const [wishlist, setWishlist] = useState([]);
     const [recentlyViewed, setRecentlyViewed] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    // database variables
     const cartCollectionRef = collection(db, "cart");
     const wishCollectionRef = collection(db, "wishlist");
     const productCollectionRef = collection(db, "products");
@@ -84,7 +98,6 @@ function App() {
         getRecentlyViewedList();
         return;
     }, []);
-    const [totalPrice, setTotalPrice] = useState(0);
 
     const handleBurgerToggler = () => {
         setBurgerToggle(!burgerToggle);

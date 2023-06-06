@@ -29,108 +29,107 @@ const SignUp = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSignUp} className='grid gap-3 sm:gap-5'>
-                <div className='flex items-center justify-between'>
+        <div className='flex flex-col gap-5 '>
+            <div>
+                <p className='text-3xl text-bold text-center text-green-600'>
+                    Create your account
+                </p>
+            </div>
+            <form onSubmit={handleSignUp} className='grid gap-3 sm :gap-5'>
+                <div className='flex flex-col justify-between gap-2'>
                     <label
                         htmlFor='userFirstName'
-                        className='flex-1 text-right pe-2 sm:pe-5'
+                        className='flex-1 pe-2 sm :pe-5'
                     >
-                        First Name:
+                        First Name :
                     </label>
                     <input
                         type='text'
                         name='userFirstName'
                         value={first}
                         onChange={(e) => setFirst(e.target.value)}
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
+                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
                         required
                     />
                 </div>
-                <div className='flex items-center justify-between'>
+                <div className='flex flex-col justify-between gap-2'>
                     <label
                         htmlFor='userLastName'
-                        className='flex-1 text-right pe-2 sm:pe-5'
+                        className='flex-1 pe-2 sm :pe-5'
                     >
-                        Last Name:
+                        Last Name :
                     </label>
                     <input
                         type='text'
                         name='userLastName'
                         value={Last}
                         onChange={(e) => setLast(e.target.value)}
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
+                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
                         required
                     />
                 </div>
-                <div className='flex items-center justify-between'>
-                    <label
-                        htmlFor='userPhone'
-                        className='flex-1 text-right pe-2 sm:pe-5'
-                    >
-                        Phone Number:
+                <div className='flex flex-col justify-between gap-2'>
+                    <label htmlFor='userPhone' className='flex-1 pe-2 sm :pe-5'>
+                        Phone Number :
                     </label>
                     <input
                         type='text'
                         name='userPhone'
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
+                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
                         required
                     />
                 </div>
 
-                <div className='flex items-center justify-between'>
-                    <label
-                        htmlFor='userEmail'
-                        className='flex-1 text-right pe-2 sm:pe-5'
-                    >
-                        Email:
+                <div className='flex flex-col justify-between gap-2'>
+                    <label htmlFor='userEmail' className='flex-1 pe-2 sm :pe-5'>
+                        Email :
                     </label>
                     <input
                         type='email'
                         name='userEmail'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
                         required
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
                     />
                 </div>
-                <div className='flex items-center justify-between'>
+                <div className='flex flex-col justify-between gap-2'>
                     <label
                         htmlFor='userPassowrd'
-                        className='flex-1 text-right pe-2 sm:pe-5'
+                        className='flex-1 pe-2 sm :pe-5'
                     >
-                        Password:
+                        Password :
                     </label>
                     <input
                         type='password'
                         name='userPassowrd'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
+                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
                         required
                     />
                 </div>
-                <div className='flex items-center justify-between'>
+                <div className='flex flex-col justify-between gap-2'>
                     <label
                         htmlFor='confirmPassword'
-                        className='flex-1 text-right pe-2 sm:pe-5'
+                        className='flex-1 pe-2 sm :pe-5'
                     >
-                        Confirm passowrd:
+                        Confirm passowrd :
                     </label>
                     <input
                         type='password'
                         name='confirmPassword'
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className='outline-none border-2 px-3 py-1 border-black flex-1'
+                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
                         required
                     />
                 </div>
 
-                <button className='outline-none ring-2 ring-black mx-auto rounded-md w-fit px-4 py-1'>
-                    Sign Up
+                <button className='outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'>
+                    Sign in
                 </button>
             </form>
         </div>
