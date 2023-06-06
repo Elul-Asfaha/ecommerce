@@ -3,7 +3,8 @@ import Product from "./pages/Product.jsx";
 import Home from "./pages/Home.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BurgerMenu from "./components/BurgerMenu.jsx";
-
+import Login from "./components/authComponents/Login";
+import SignUp from "./components/authComponents/SignUp";
 import CartModal from "./components/CartModal.jsx";
 import Cart from "./pages/Cart.jsx";
 import Wishlist from "./pages/Wishlist.jsx";
@@ -11,8 +12,10 @@ import Order from "./pages/Order.jsx";
 import { db } from "./config/firebase.js";
 import { getDocs, collection } from "firebase/firestore";
 export const ContextProvider = createContext(); //context provider
-
+import Authentication from "./pages/Authentication.jsx";
 function App() {
+    const [user, setUser] = useState();
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
     const [store, setStore] = useState([]);
     const [cart, setCart] = useState([]);
     const [paginationNumber, setPaginationNumber] = useState(1);
@@ -138,16 +141,30 @@ function App() {
                 setPaginationNumber,
                 totalPrice,
                 setTotalPrice,
+                user,
+                setUser,
+                userLoggedIn,
+                setUserLoggedIn,
             }}
         >
             <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/product/:id' element={<Product />} />
-                    <Route path='/cart' element={<Cart />} />
-                    <Route path='/wishlist' element={<Wishlist />} />
-                    <Route path='/order/:id' element={<Order />} />
-                </Routes>
+                {!userLoggedIn ? (
+                    <Routes>
+                        <Route element={<Authentication />}>
+                            <Route path='/' element={<Login />} />
+                            <Route path='/signup' element={<SignUp />} />
+                        </Route>
+                    </Routes>
+                ) : (
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/product/:id' element={<Product />} />
+                        <Route path='/cart' element={<Cart />} />
+                        <Route path='/wishlist' element={<Wishlist />} />
+                        <Route path='/order/:id' element={<Order />} />
+                    </Routes>
+                )}
+
                 {burgerToggle && <BurgerMenu />}
                 {cartToggle && <CartModal />}
             </BrowserRouter>
