@@ -59,10 +59,7 @@ const Wishlist = () => {
     return (
         <div className='flex flex-col gap-5 pb-[100px]'>
             <Nav back={true} />
-            <div
-                className='flex flex-col gap-5'
-                onClick={() => providedData.setCartToggle(false)}
-            >
+            <div className='flex flex-col gap-5'>
                 <div className='flex flex-col gap-5 mx-auto'>
                     {providedData.wishlist.length != 0 ? (
                         dispCartItems

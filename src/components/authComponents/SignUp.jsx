@@ -22,6 +22,7 @@ const SignUp = () => {
                 const user = userCredential.user;
                 providedData.setUser(user.email);
                 providedData.setUserLoggedIn(true);
+                sessionStorage.setItem("user", JSON.stringify(user.email));
             })
             .catch((err) => console.log("email already in use"));
         setPassword("");

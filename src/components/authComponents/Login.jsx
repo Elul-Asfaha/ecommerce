@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ContextProvider } from "../../App";
+import { stringify } from "postcss";
 
 const Login = () => {
     const providedData = useContext(ContextProvider);
@@ -17,10 +18,12 @@ const Login = () => {
                 const user = userCredential.user;
                 providedData.setUser(user.email);
                 providedData.setUserLoggedIn(true);
+                sessionStorage.setItem("user", JSON.stringify(user.email));
             })
             .catch((err) => console.error(err));
         setPassword("");
     };
+
     return (
         <div className='flex flex-col gap-5 '>
             <div>

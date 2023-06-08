@@ -49,10 +49,7 @@ const Product = () => {
 
             {/* prevents the page from displaying the content before the details var is assigned */}
             {!details.length == 0 && (
-                <div
-                    onClick={() => providedData.setCartToggle(false)}
-                    className='flex flex-col lg:grid mt-[5%] md:mt-[2%] lg:grid-cols-2 gap-5 px-[5%]'
-                >
+                <div className='flex flex-col lg:grid mt-[5%] md:mt-[2%] lg:grid-cols-2 gap-5 px-[5%]'>
                     <div className='flex flex-col justify-center gap-3'>
                         <ProductImg details={details} />
                     </div>

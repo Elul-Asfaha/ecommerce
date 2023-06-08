@@ -33,23 +33,33 @@ const CartModal = () => {
     ));
 
     return (
-        <div className='hidden md:flex flex-col justify-between bg-white shadow-xl py-5 fixed overflow-y-scroll scrollbar-hide border border-white top-[5%] bottom-[5%] right-5 w-[500px] max-h-[800px] rounded-xl'>
-            <div className='flex flex-col gap-5'>
-                {providedData.cart.length != 0 ? (
-                    dispCartItems
-                ) : (
-                    <div className='flex items-center text-center justify-center h-[60px]'>
-                        <p className='font-bold'>Such empty? Much Wow!</p>
-                    </div>
-                )}
-            </div>
-            <Link
-                to='/cart'
+        <div className='fixed top-0 left-0 right-0 bottom-0'>
+            <div
+                className='w-full h-full'
                 onClick={() => providedData.setCartToggle(false)}
-                className='capitalize underline text-center font-bold'
-            >
-                show all
-            </Link>
+            ></div>
+            <div onClick={() => providedData.setCartToggle(false)}>
+                <div className='hidden md:flex flex-col justify-between bg-white shadow-xl py-5 fixed overflow-y-scroll scrollbar-hide border border-white top-[5%] bottom-[5%] right-5 w-[500px] max-h-[800px] rounded-xl'>
+                    <div className='flex flex-col gap-5'>
+                        {providedData.cart.length != 0 ? (
+                            dispCartItems
+                        ) : (
+                            <div className='flex items-center text-center justify-center h-[60px]'>
+                                <p className='font-bold'>
+                                    Such empty? Much Wow!
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                    <Link
+                        to='/cart'
+                        onClick={() => providedData.setCartToggle(false)}
+                        className='capitalize underline text-center font-bold'
+                    >
+                        show all
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 };

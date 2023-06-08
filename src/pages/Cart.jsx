@@ -55,10 +55,7 @@ const Cart = () => {
     return (
         <div className='flex flex-col gap-5 pb-[100px]'>
             <Nav back={true} />
-            <div
-                className='flex flex-col gap-5'
-                onClick={() => providedData.setCartToggle(false)}
-            >
+            <div className='flex flex-col gap-5'>
                 {providedData.cart.length != 0 && (
                     <div className='radius-lg shadow-md w-full sm:max-w-sm sm:mx-auto'>
                         <Link to={`/order/${"buyAll"}`}>

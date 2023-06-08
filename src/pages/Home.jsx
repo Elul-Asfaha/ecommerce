@@ -15,7 +15,7 @@ const Home = () => {
         <div className=''>
             <MinBanner />
             <Nav />
-            <div onClick={() => providedData.setCartToggle(false)}>
+            <div>
                 <Banner />
                 <Filter />
                 {providedData.store && <Products />}
