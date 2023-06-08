@@ -7,10 +7,7 @@ const Nav = ({ back }) => {
     const providedData = useContext(ContextProvider);
     return (
         <div className='flex items-center justify-between gap-5 capitalize px-[5%] pt-4'>
-            <div
-                className=' hidden md:flex items-center justify-between'
-                onClick={() => providedData.setCartToggle(false)}
-            >
+            <div className=' hidden md:flex items-center justify-between'>
                 <Link
                     to='/'
                     className='flex w-[50px]'
@@ -28,10 +25,7 @@ const Nav = ({ back }) => {
                 </div>
             )}
             <div className=' flex mx-auto sm:mx-0 items-center justify-center md:justify-between'>
-                <div
-                    className='flex items-center bg-slate-200 rounded-full px-5 py-1'
-                    onClick={() => providedData.setCartToggle(false)}
-                >
+                <div className='flex items-center bg-slate-200 rounded-full px-5 py-1'>
                     <input
                         type='text'
                         className='outline-none  bg-slate-200'

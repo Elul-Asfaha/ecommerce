@@ -27,7 +27,7 @@ import { getDocs, collection } from "firebase/firestore";
 function App() {
     const [user, setUser] = useState();
     const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [store, setStore] = useState([]);
+    const [store, setStore] = useState(data);
     const [cart, setCart] = useState([]);
     const [paginationNumber, setPaginationNumber] = useState(1);
     const [burgerToggle, setBurgerToggle] = useState(false);
@@ -95,10 +95,10 @@ function App() {
         let reloadUser = JSON.parse(sessionStorage.getItem("user"));
         reloadUser && setUser(reloadUser); // this check if the user has logged in for this session already and sets the users email if true
         reloadUser && setUserLoggedIn(true); // this check if the user has logged in for this session already and sets the users email if true
-        getProductList();
-        getCartList();
-        getWishList();
-        getRecentlyViewedList();
+        // getProductList();
+        // getCartList();
+        // getWishList();
+        // getRecentlyViewedList();
         return;
     }, []);
 
@@ -163,27 +163,29 @@ function App() {
                 setUserLoggedIn,
             }}
         >
-            <BrowserRouter>
-                {!userLoggedIn ? (
-                    <Routes>
-                        <Route element={<Authentication />}>
-                            <Route path='/' element={<Login />} />
-                            <Route path='/signup' element={<SignUp />} />
-                        </Route>
-                    </Routes>
-                ) : (
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/product/:id' element={<Product />} />
-                        <Route path='/cart' element={<Cart />} />
-                        <Route path='/wishlist' element={<Wishlist />} />
-                        <Route path='/order/:id' element={<Order />} />
-                    </Routes>
-                )}
+            <div className='font-Libre'>
+                <BrowserRouter>
+                    {!userLoggedIn ? (
+                        <Routes>
+                            <Route element={<Authentication />}>
+                                <Route path='/' element={<Login />} />
+                                <Route path='/signup' element={<SignUp />} />
+                            </Route>
+                        </Routes>
+                    ) : (
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path='/product/:id' element={<Product />} />
+                            <Route path='/cart' element={<Cart />} />
+                            <Route path='/wishlist' element={<Wishlist />} />
+                            <Route path='/order/:id' element={<Order />} />
+                        </Routes>
+                    )}
 
-                {burgerToggle && <BurgerMenu />}
-                {cartToggle && <CartModal />}
-            </BrowserRouter>
+                    {burgerToggle && <BurgerMenu />}
+                    {cartToggle && <CartModal />}
+                </BrowserRouter>
+            </div>
         </ContextProvider.Provider>
     );
 }

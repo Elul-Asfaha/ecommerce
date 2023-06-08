@@ -11,7 +11,11 @@ import {
 } from "react-icons/ai";
 
 import { FiChevronDown, FiFilter } from "react-icons/fi";
-import { HiMenuAlt3 } from "react-icons/hi";
+import {
+    HiMenuAlt3,
+    HiOutlineAtSymbol,
+    HiOutlineLockClosed,
+} from "react-icons/hi";
 import { BsTruck, BsTrash3 } from "react-icons/bs";
 import { BiArrowBack } from "react-icons/bi";
 import { TiCancel } from "react-icons/ti";
@@ -32,5 +36,7 @@ const ReactIcons = {
     BiArrowBack: BiArrowBack,
     BsTrash3: BsTrash3,
     TiCancel: TiCancel,
+    HiOutlineAtSymbol: HiOutlineAtSymbol,
+    HiOutlineLockClosed: HiOutlineLockClosed,
 };
 export default ReactIcons;

@@ -25,11 +25,15 @@ const SignUp = () => {
             })
             .catch((err) => console.log("email already in use"));
         setPassword("");
+        setEmail("");
+        setPhone("");
+        setLast("");
         setConfirmPassword("");
+        setFirst("");
     };
 
     return (
-        <div className='flex flex-col gap-5 '>
+        <div className='flex flex-col gap-5'>
             <div>
                 <p className='text-3xl text-bold text-center text-green-600'>
                     Create your account
@@ -43,14 +47,16 @@ const SignUp = () => {
                     >
                         First Name :
                     </label>
-                    <input
-                        type='text'
-                        name='userFirstName'
-                        value={first}
-                        onChange={(e) => setFirst(e.target.value)}
-                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
-                        required
-                    />
+                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
+                        <input
+                            type='text'
+                            name='userFirstName'
+                            value={first}
+                            onChange={(e) => setFirst(e.target.value)}
+                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            required
+                        />
+                    </div>
                 </div>
                 <div className='flex flex-col justify-between'>
                     <label
@@ -59,41 +65,47 @@ const SignUp = () => {
                     >
                         Last Name :
                     </label>
-                    <input
-                        type='text'
-                        name='userLastName'
-                        value={Last}
-                        onChange={(e) => setLast(e.target.value)}
-                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
-                        required
-                    />
+                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
+                        <input
+                            type='text'
+                            name='userLastName'
+                            value={Last}
+                            onChange={(e) => setLast(e.target.value)}
+                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            required
+                        />
+                    </div>
                 </div>
                 <div className='flex flex-col justify-between'>
                     <label htmlFor='userPhone' className='flex-1 pe-2 sm:pe-5'>
                         Phone Number :
-                    </label>
-                    <input
-                        type='text'
-                        name='userPhone'
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
-                        required
-                    />
+                    </label>{" "}
+                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
+                        <input
+                            type='text'
+                            name='userPhone'
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            required
+                        />
+                    </div>
                 </div>
 
                 <div className='flex flex-col justify-between'>
                     <label htmlFor='userEmail' className='flex-1 pe-2 sm:pe-5'>
                         Email :
                     </label>
-                    <input
-                        type='email'
-                        name='userEmail'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
-                        required
-                    />
+                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
+                        <input
+                            type='email'
+                            name='userEmail'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            required
+                        />
+                    </div>
                 </div>
                 <div className='flex flex-col justify-between'>
                     <label
@@ -102,30 +114,34 @@ const SignUp = () => {
                     >
                         Password :
                     </label>
-                    <input
-                        type='password'
-                        name='userPassowrd'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
-                        required
-                    />
+                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
+                        <input
+                            type='password'
+                            name='userPassowrd'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            required
+                        />
+                    </div>
                 </div>
                 <div className='flex flex-col justify-between'>
                     <label
                         htmlFor='confirmPassword'
                         className='flex-1 pe-2 sm:pe-5'
                     >
-                        Confirm passowrd :
+                        Confirm passoword :
                     </label>
-                    <input
-                        type='password'
-                        name='confirmPassword'
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        className='outline-none border-2 min-w-[320px] border-gray-200 rounded-md px-3 py-1  flex-1'
-                        required
-                    />
+                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
+                        <input
+                            type='password'
+                            name='confirmPassword'
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            required
+                        />
+                    </div>
                 </div>
 
                 <button className='outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'>
