@@ -14,7 +14,6 @@ const SignUp = () => {
     const handleSignUp = (e) => {
         e.preventDefault();
         password != confirmPassword && console.log("password does not match");
-        password === confirmPassword && console.log("success");
 
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
@@ -37,10 +36,10 @@ const SignUp = () => {
                 </p>
             </div>
             <form onSubmit={handleSignUp} className='grid gap-3 sm :gap-5'>
-                <div className='flex flex-col justify-between gap-2'>
+                <div className='flex flex-col justify-between'>
                     <label
                         htmlFor='userFirstName'
-                        className='flex-1 pe-2 sm :pe-5'
+                        className='flex-1 pe-2 sm:pe-5'
                     >
                         First Name :
                     </label>
@@ -53,10 +52,10 @@ const SignUp = () => {
                         required
                     />
                 </div>
-                <div className='flex flex-col justify-between gap-2'>
+                <div className='flex flex-col justify-between'>
                     <label
                         htmlFor='userLastName'
-                        className='flex-1 pe-2 sm :pe-5'
+                        className='flex-1 pe-2 sm:pe-5'
                     >
                         Last Name :
                     </label>
@@ -69,8 +68,8 @@ const SignUp = () => {
                         required
                     />
                 </div>
-                <div className='flex flex-col justify-between gap-2'>
-                    <label htmlFor='userPhone' className='flex-1 pe-2 sm :pe-5'>
+                <div className='flex flex-col justify-between'>
+                    <label htmlFor='userPhone' className='flex-1 pe-2 sm:pe-5'>
                         Phone Number :
                     </label>
                     <input
@@ -83,8 +82,8 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className='flex flex-col justify-between gap-2'>
-                    <label htmlFor='userEmail' className='flex-1 pe-2 sm :pe-5'>
+                <div className='flex flex-col justify-between'>
+                    <label htmlFor='userEmail' className='flex-1 pe-2 sm:pe-5'>
                         Email :
                     </label>
                     <input
@@ -96,10 +95,10 @@ const SignUp = () => {
                         required
                     />
                 </div>
-                <div className='flex flex-col justify-between gap-2'>
+                <div className='flex flex-col justify-between'>
                     <label
                         htmlFor='userPassowrd'
-                        className='flex-1 pe-2 sm :pe-5'
+                        className='flex-1 pe-2 sm:pe-5'
                     >
                         Password :
                     </label>
@@ -112,10 +111,10 @@ const SignUp = () => {
                         required
                     />
                 </div>
-                <div className='flex flex-col justify-between gap-2'>
+                <div className='flex flex-col justify-between'>
                     <label
                         htmlFor='confirmPassword'
-                        className='flex-1 pe-2 sm :pe-5'
+                        className='flex-1 pe-2 sm:pe-5'
                     >
                         Confirm passowrd :
                     </label>

@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ContextProvider } from "../../App";
-import { stringify } from "postcss";
 
 const Login = () => {
     const providedData = useContext(ContextProvider);
@@ -16,9 +15,9 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                providedData.setUser(user.email);
+                // providedData.setUser(user.email);
                 providedData.setUserLoggedIn(true);
-                sessionStorage.setItem("user", JSON.stringify(user.email));
+                // sessionStorage.setItem("user", JSON.stringify(user.email));
             })
             .catch((err) => console.error(err));
         setPassword("");
