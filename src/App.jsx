@@ -27,7 +27,7 @@ import { getDocs, collection } from "firebase/firestore";
 function App() {
     const [user, setUser] = useState();
     const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [store, setStore] = useState(data);
+    const [store, setStore] = useState([]);
     const [cart, setCart] = useState([]);
     const [paginationNumber, setPaginationNumber] = useState(1);
     const [burgerToggle, setBurgerToggle] = useState(false);
