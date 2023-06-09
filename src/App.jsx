@@ -95,10 +95,10 @@ function App() {
         let reloadUser = JSON.parse(sessionStorage.getItem("user"));
         reloadUser && setUser(reloadUser); // this check if the user has logged in for this session already and sets the users email if true
         reloadUser && setUserLoggedIn(true); // this check if the user has logged in for this session already and sets the users email if true
-        // getProductList();
-        // getCartList();
-        // getWishList();
-        // getRecentlyViewedList();
+        getProductList();
+        getCartList();
+        getWishList();
+        getRecentlyViewedList();
         return;
     }, []);
 
