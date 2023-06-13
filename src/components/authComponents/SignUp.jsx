@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ContextProvider } from "../../App";
+import SignUpError from "./SignUpError";
 
 const SignUp = () => {
     const providedData = useContext(ContextProvider);
@@ -10,20 +11,31 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [signUpErrorMsg, setSignUpErrorMsg] = useState("");
 
-    const handleSignUp = (e) => {
+    const checkPasswordEqual = (e) => {
         e.preventDefault();
-        password != confirmPassword && console.log("password does not match");
 
+        password === confirmPassword
+            ? handleSignUp()
+            : setSignUpErrorMsg("passwords do not match");
+    };
+    const handleSignUp = () => {
         const auth = getAuth();
+        providedData.setLoading(true);
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 providedData.setUser(user.email);
                 providedData.setUserLoggedIn(true);
                 sessionStorage.setItem("user", JSON.stringify(user.email));
+                providedData.setLoading(false);
             })
-            .catch((err) => console.log("email already in use"));
+            .catch((err) => {
+                setSignUpErrorMsg(err.message);
+                providedData.setLoading(false);
+            });
         setPassword("");
         setEmail("");
         setPhone("");
@@ -34,12 +46,21 @@ const SignUp = () => {
 
     return (
         <div className='flex flex-col gap-5'>
+            {signUpErrorMsg && (
+                <SignUpError
+                    signUpErrorMsg={signUpErrorMsg}
+                    setSignUpErrorMsg={setSignUpErrorMsg}
+                />
+            )}
             <div>
                 <p className='text-3xl text-bold text-center text-green-600'>
                     Create your account
                 </p>
             </div>
-            <form onSubmit={handleSignUp} className='grid gap-3 sm :gap-5'>
+            <form
+                onSubmit={checkPasswordEqual}
+                className='grid gap-3 sm :gap-5'
+            >
                 <div className='flex flex-col justify-between'>
                     <label
                         htmlFor='userFirstName'
@@ -54,6 +75,7 @@ const SignUp = () => {
                             value={first}
                             onChange={(e) => setFirst(e.target.value)}
                             className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            autoComplete='given-name'
                             required
                         />
                     </div>
@@ -72,6 +94,7 @@ const SignUp = () => {
                             value={Last}
                             onChange={(e) => setLast(e.target.value)}
                             className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            autoComplete='family-name'
                             required
                         />
                     </div>
@@ -103,6 +126,7 @@ const SignUp = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            autoComplete='username'
                             required
                         />
                     </div>
@@ -121,6 +145,7 @@ const SignUp = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            autoComplete='new-password'
                             required
                         />
                     </div>
@@ -139,13 +164,22 @@ const SignUp = () => {
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             className='outline-none py-1 flex-1 text-xl bg-gray-100'
+                            autoComplete='new-password'
                             required
                         />
                     </div>
                 </div>
 
-                <button className='outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'>
-                    Sign in
+                <button
+                    className='flex items-center justify-center outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'
+                    disabled={providedData.loading}
+                >
+                    {" "}
+                    {providedData.loading ? (
+                        <div className='p-3 animate-spin border-2 rounded-full border-white border-t-black'></div>
+                    ) : (
+                        <span>Sign in</span>
+                    )}
                 </button>
             </form>
         </div>

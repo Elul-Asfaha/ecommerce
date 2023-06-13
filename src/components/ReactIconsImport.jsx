@@ -8,6 +8,7 @@ import {
     AiOutlineUser,
     AiOutlineCalendar,
     AiOutlineClose,
+    AiOutlineWarning,
 } from "react-icons/ai";
 
 import { FiChevronDown, FiFilter } from "react-icons/fi";
@@ -38,5 +39,6 @@ const ReactIcons = {
     TiCancel: TiCancel,
     HiOutlineAtSymbol: HiOutlineAtSymbol,
     HiOutlineLockClosed: HiOutlineLockClosed,
+    AiOutlineWarning: AiOutlineWarning,
 };
 export default ReactIcons;

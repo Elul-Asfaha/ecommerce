@@ -13,7 +13,9 @@ const Product = () => {
     const [color, setColor] = useState(1);
     const { id } = useParams(); // gets the product id from the card component
 
-    const details = providedData.store.filter((items) => items.id === id);
+    const details = providedData.store.filter(
+        (items) => items.id === Number(id)
+    );
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [id]);

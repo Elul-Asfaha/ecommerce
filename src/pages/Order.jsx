@@ -29,13 +29,17 @@ const Order = () => {
     }, []);
     return (
         <div>
-            <div>
+            <div className='mx-auto w-fit pt-5 text-2xl'>
                 Checkout (
-                <span className='text-blue-700 '>{purchase.length} items</span>)
+                <span className='text-blue-700 '>
+                    {id == "buyAll" ? providedData.cart.length : buyNow.length}{" "}
+                    items
+                </span>
+                )
             </div>
             <div className='grid grid-cols-1 md:grid-cols-3  py-5 gap-5 capitalize md:px-[5%]'>
                 <div className='grid grid-row-2 gap-[60px] col-span-2'>
-                    <div className='border border-1 py-5'>
+                    <div className='border border-1 rounded-md py-5'>
                         <p className='flex flex-col text-center font-bold text-3xl px-5'>
                             review your items
                         </p>
@@ -43,7 +47,7 @@ const Order = () => {
                     </div>
                 </div>
                 <div className='flex flex-col gap-[20px]'>
-                    <div className='flex flex-col p-5 border border-1 h-fit'>
+                    <div className='flex flex-col p-5 border border-1 rounded-md h-fit'>
                         <form className='flex flex-col gap-2 px-5 md:px-5 '>
                             <p className='text-3xl'>order summery</p>
                             <div>
@@ -77,21 +81,21 @@ const Order = () => {
                                     <label htmlFor=''>payment</label>
                                 </div>
                             </fieldset>
-                            <div className='flex gap-5'>
+                            <div className='flex flex-wrap gap-5'>
                                 <img
                                     src={Assets.paypal}
                                     alt=''
-                                    className='h-[40px] w-[60px] container'
+                                    className='h-[1.5rem] w-[3rem] container'
                                 />
                                 <img
                                     src={Assets.mastercard}
                                     alt=''
-                                    className='h-[40px] w-[60px] container'
+                                    className='h-[1.5rem] w-[3rem] container'
                                 />
                                 <img
                                     src={Assets.prime}
                                     alt=''
-                                    className='h-[40px] w-[60px] container'
+                                    className='h-[1.5rem] w-[3rem] container'
                                 />
                             </div>
                             <div className='border bg-gray-200 '>
@@ -107,7 +111,7 @@ const Order = () => {
                             </div>
                         </form>
                     </div>
-                    <div className='border border-1 p-5 flex flex-col gap-5 px-10 md:px-5'>
+                    <div className='border border-1 rounded-md p-5 flex flex-col gap-5 px-10 md:px-5'>
                         <p className='flex flex-col text-3xl px-5'>
                             delivery information
                         </p>
