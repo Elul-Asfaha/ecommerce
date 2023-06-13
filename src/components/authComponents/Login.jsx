@@ -2,16 +2,17 @@ import { useContext, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ContextProvider } from "../../App";
 import ReactIcons from "../ReactIconsImport";
+import SignUpError from "./SignUpError";
 
 const Login = () => {
     const providedData = useContext(ContextProvider);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [signUpErrorMsg, setSignUpErrorMsg] = useState("");
     const handleLogin = (e) => {
         e.preventDefault();
-        !(!email || !password);
-
+        providedData.setLoading(true);
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -19,14 +20,24 @@ const Login = () => {
                 providedData.setUser(user.email);
                 providedData.setUserLoggedIn(true);
                 sessionStorage.setItem("user", JSON.stringify(user.email));
+                providedData.setLoading(false);
             })
-            .catch((err) => console.error(err));
+            .catch((err) => {
+                setSignUpErrorMsg(err.message);
+                providedData.setLoading(false);
+            });
         setPassword("");
         setEmail("");
     };
 
     return (
         <div className='flex flex-col gap-5'>
+            {signUpErrorMsg && (
+                <SignUpError
+                    signUpErrorMsg={signUpErrorMsg}
+                    setSignUpErrorMsg={setSignUpErrorMsg}
+                />
+            )}
             <div>
                 <p className='text-3xl text-bold text-center text-green-600'>
                     Welcome back
@@ -65,8 +76,15 @@ const Login = () => {
                         <ReactIcons.HiOutlineLockClosed className='text-2xl' />
                     </div>
                 </div>
-                <button className='outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'>
-                    Sign in
+                <button
+                    className='flex items-center justify-center outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'
+                    disabled={providedData.loading}
+                >
+                    {providedData.loading ? (
+                        <div className='p-3 animate-spin border-2 rounded-full border-white border-t-black'></div>
+                    ) : (
+                        <span>Sign in</span>
+                    )}
                 </button>
             </form>
         </div>

@@ -35,7 +35,7 @@ function App() {
     const [wishlist, setWishlist] = useState([]);
     const [recentlyViewed, setRecentlyViewed] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-
+    const [loading, setLoading] = useState(false);
     // database variables
     const cartCollectionRef = collection(db, "cart");
     const wishCollectionRef = collection(db, "wishlist");
@@ -91,6 +91,13 @@ function App() {
         }
     };
 
+    const logout = () => {
+        setUser("");
+        setUserLoggedIn(false);
+        setBurgerToggle(false);
+        sessionStorage.clear();
+        console.log("hi");
+    };
     useEffect(() => {
         let reloadUser = JSON.parse(sessionStorage.getItem("user"));
         reloadUser && setUser(reloadUser); // this check if the user has logged in for this session already and sets the users email if true
@@ -161,18 +168,22 @@ function App() {
                 setUser,
                 userLoggedIn,
                 setUserLoggedIn,
+                logout,
+                loading,
+                setLoading,
             }}
         >
-            <div className='font-Libre'>
+            <div className='font-Roboto'>
                 <BrowserRouter>
-                    {!userLoggedIn ? (
+                    {!userLoggedIn && (
                         <Routes>
                             <Route element={<Authentication />}>
                                 <Route path='/' element={<Login />} />
                                 <Route path='/signup' element={<SignUp />} />
                             </Route>
                         </Routes>
-                    ) : (
+                    )}
+                    {userLoggedIn && (
                         <Routes>
                             <Route path='/' element={<Home />} />
                             <Route path='/product/:id' element={<Product />} />

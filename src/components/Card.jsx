@@ -52,11 +52,11 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
     };
 
     return (
-        <div className='relative min-w-[310px] max-w-sm shadow-md pb-2'>
+        <div className='relative min-w-[290px] max-w-sm shadow-md pb-2 flex flex-col gap-3'>
             <Link
                 to={`/product/${id}`}
                 onClick={() => handleAddToRecentlyViewed()}
-                className=' flex flex-col gap-1'
+                className='flex flex-col gap-1'
             >
                 <div className='rounded-t-lg overflow-hidden bg-gray-300'>
                     <img
@@ -66,7 +66,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                         className='min-h-[200px]'
                     />
                 </div>
-                <div className='px-1'>
+                <div className='px-2 flex flex-col gap-1'>
                     <div className='flex justify-between font-semibold'>
                         <p>wireless earbuds, ipx8</p>
                         <p>${price}</p>
@@ -80,7 +80,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
             </Link>
             <button
                 onClick={() => handleAddToCart()}
-                className='ring ring-green-800 py-1 px-3 m-1 ms-2 rounded-xl flex gap-2 items-center w-fit active:animate-ping'
+                className='ring ring-green-800 py-1 px-3 m-1 ms-2 rounded-xl flex gap-2 items-center w-fit'
             >
                 <ReactIcons.AiOutlineShoppingCart className='text-2xl' />
                 <span>add to cart</span>
@@ -88,7 +88,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
 
             <button
                 onClick={() => handleSubmitFav()}
-                className='absolute top-3 right-3 text-3xl text-white hover:text-gray-200 active:text-red-700'
+                className='absolute top-3 right-3 text-3xl text-white hover:text-gray-200 active:text-red-700 active:animate-ping'
             >
                 <ReactIcons.AiOutlineHeart />
             </button>

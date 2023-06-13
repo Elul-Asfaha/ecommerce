@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'Libre': ['Libre Baskerville', 'serif']
+        'Roboto': ['Roboto', 'serif']
       }
     },
   },
