@@ -51,7 +51,7 @@ function App() {
             }));
             setStore(filteredData);
         } catch (err) {
-            // console.error(err);
+            console.error(err);
         }
     };
     const getCartList = async () => {
