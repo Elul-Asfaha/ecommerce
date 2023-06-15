@@ -48,7 +48,6 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
         } catch (err) {
             console.error(err);
         }
-        location.reload();
     };
 
     return (

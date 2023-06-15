@@ -17,6 +17,9 @@ const SignUpError = ({ signUpErrorMsg, setSignUpErrorMsg }) => {
             case "Firebase: Error (auth/user-not-found).":
                 setDispError("Email is not in use");
                 break;
+            case "Firebase: Error (auth/network-request-failed).":
+                setDispError("Check your connection please");
+                break;
             default:
                 setDispError(signUpErrorMsg);
         }
