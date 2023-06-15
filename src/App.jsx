@@ -23,6 +23,7 @@ export const ContextProvider = createContext();
 //firebase
 import { db } from "./config/firebase.js";
 import { getDocs, collection } from "firebase/firestore";
+import PrivateRoutes from "./components/PrivateRoutes.jsx";
 
 function App() {
     const [user, setUser] = useState();
@@ -171,27 +172,51 @@ function App() {
                 logout,
                 loading,
                 setLoading,
+                userLoggedIn,
             }}
         >
             <div className='font-Roboto'>
                 <BrowserRouter>
-                    {!userLoggedIn && (
-                        <Routes>
-                            <Route element={<Authentication />}>
-                                <Route path='/' element={<Login />} />
-                                <Route path='/signup' element={<SignUp />} />
-                            </Route>
-                        </Routes>
-                    )}
-                    {userLoggedIn && (
-                        <Routes>
-                            <Route path='/' element={<Home />} />
-                            <Route path='/product/:id' element={<Product />} />
-                            <Route path='/cart' element={<Cart />} />
-                            <Route path='/wishlist' element={<Wishlist />} />
-                            <Route path='/order/:id' element={<Order />} />
-                        </Routes>
-                    )}
+                    <Routes>
+                        <Route
+                            element={
+                                <PrivateRoutes userLoggedIn={userLoggedIn} />
+                            }
+                        >
+                            <Route path='/' element={<Home />} exact />
+                            <Route
+                                path='/product/:id'
+                                element={<Product />}
+                                exact
+                            />
+                            <Route path='/cart' element={<Cart />} exact />
+                            <Route
+                                path='/wishlist'
+                                element={<Wishlist />}
+                                exact
+                            />
+                            <Route
+                                path='/order/:id'
+                                element={<Order />}
+                                exact
+                            />
+                        </Route>
+                        <Route
+                            path='/Authentication/'
+                            element={
+                                <Authentication userLoggedIn={userLoggedIn} />
+                            }
+                        >
+                            <Route
+                                path='/Authentication/login'
+                                element={<Login />}
+                            />
+                            <Route
+                                path='/Authentication/signup'
+                                element={<SignUp />}
+                            />
+                        </Route>
+                    </Routes>
 
                     {burgerToggle && <BurgerMenu />}
                     {cartToggle && <CartModal />}
