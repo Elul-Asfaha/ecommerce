@@ -25,7 +25,6 @@ const Order = () => {
                   setCartTotal((prev) => (prev += items.price))
               )
             : setCartTotal(buyNow[0].price);
-        console.log(cartTotal);
     }, []);
     return (
         <div>

@@ -97,7 +97,6 @@ function App() {
         setUserLoggedIn(false);
         setBurgerToggle(false);
         sessionStorage.clear();
-        console.log("hi");
     };
     useEffect(() => {
         let reloadUser = JSON.parse(sessionStorage.getItem("user"));
