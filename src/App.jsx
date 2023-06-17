@@ -2,18 +2,16 @@ import { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //pages
-import Cart from "./pages/Cart.jsx";
-import Authentication from "./pages/Authentication.jsx";
-import Product from "./pages/Product.jsx";
-import Home from "./pages/Home.jsx";
-import Order from "./pages/Order.jsx";
-import Wishlist from "./pages/Wishlist.jsx";
+import { Cart, Authentication, Product, Home, Order, Wishlist } from "./pages";
 
 //components
-import BurgerMenu from "./components/BurgerMenu.jsx";
-import Login from "./components/authComponents/Login";
-import SignUp from "./components/authComponents/SignUp";
-import CartModal from "./components/CartModal.jsx";
+import {
+    BurgerMenu,
+    Login,
+    SignUp,
+    CartModal,
+    PrivateRoutes,
+} from "./components";
 
 import data from "./ecommerce.json";
 
@@ -23,12 +21,11 @@ export const ContextProvider = createContext();
 //firebase
 import { db } from "./config/firebase.js";
 import { getDocs, collection } from "firebase/firestore";
-import PrivateRoutes from "./components/PrivateRoutes.jsx";
 
 function App() {
     const [user, setUser] = useState();
     const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [store, setStore] = useState([]);
+    const [store, setStore] = useState(data);
     const [cart, setCart] = useState([]);
     const [paginationNumber, setPaginationNumber] = useState(1);
     const [burgerToggle, setBurgerToggle] = useState(false);
@@ -182,7 +179,7 @@ function App() {
                                 <PrivateRoutes userLoggedIn={userLoggedIn} />
                             }
                         >
-                            <Route path='/' element={<Home />} exact />
+                            <Route index element={<Home />} />
                             <Route
                                 path='/product/:id'
                                 element={<Product />}

@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { ContextProvider } from "../App";
 import { Link } from "react-router-dom";
-import Nav from "../components/Nav";
 import { db } from "../config/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
-import RatingComponent from "../components/Ratingcomponent";
-import ReactIcons from "../components/ReactIconsImport";
+import { ReactIcons, RatingComponent, Nav } from "../components";
+
 const Wishlist = () => {
     const providedData = useContext(ContextProvider);
     const handleRemoveWishlist = async (wishId) => {

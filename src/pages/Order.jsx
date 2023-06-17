@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import OrderCart from "../components/OrderCart";
+import { OrderCart } from "../components";
 import { ContextProvider } from "../App";
 import { useParams } from "react-router-dom";
 import Assets from "../assets/Assets";
