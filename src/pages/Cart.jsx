@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
-import RatingComponent from "../components/Ratingcomponent";
-import ReactIcons from "../components/ReactIconsImport";
+import { RatingComponent, ReactIcons } from "../components";
 const Cart = () => {
     const providedData = useContext(ContextProvider);
     const handleRemoveCartItem = async (cartItemId) => {

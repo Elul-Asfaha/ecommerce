@@ -5,7 +5,7 @@ import Filter from "../components/Filter.jsx";
 import RecentlyViewedProducts from "../components/RecentlyViewedProducts.jsx";
 import { useContext, useEffect } from "react";
 import { ContextProvider } from "../App";
-import Products from "../components/Products.jsx";
+import { Products } from "../components";
 const Home = () => {
     useEffect(() => {
         window.scrollTo(0, 0);

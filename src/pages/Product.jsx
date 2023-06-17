@@ -1,12 +1,10 @@
 import { useContext, useState, useEffect } from "react";
-import ReactIcons from "../components/ReactIconsImport";
-import Nav from "../components/Nav.jsx";
+import { Nav, ReactIcons, RatingComponent, ProductImg } from "../components";
 import { ContextProvider } from "../App";
 import { Link, useParams } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
-import RatingComponent from "../components/Ratingcomponent";
-import ProductImg from "../components/ProductImg";
+
 const Product = () => {
     const providedData = useContext(ContextProvider);
     const [amount, setAmount] = useState(1);
