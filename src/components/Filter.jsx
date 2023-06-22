@@ -1,89 +1,83 @@
 import { useContext } from "react";
 import { ContextProvider } from "../App";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const Filter = () => {
     const providedData = useContext(ContextProvider);
     return (
         <div className='flex flex-col md:flex-row justify-between py-5 px-[5%] gap-1'>
             <div className='flex flex-wrap gap-2'>
-                <label htmlFor='type' className='font-bold'>
-                    Type:
-                </label>
-                <select
-                    name='type'
-                    className='flex   border border-black  rounded-full px-3  gap-2'
-                    onChange={providedData.handleSelectChange}
-                >
-                    <option value=''>All</option>
-                    <option value='0'>over-ear headphones</option>
-                    <option value='1'>on-ear headphones</option>
-                    <option value='2'>earbuds</option>
-                    <option value='3'>wired</option>
-                </select>
-                <label htmlFor='price' className='font-bold'>
-                    Price
-                </label>
-                <select
-                    name='price'
-                    id='price'
-                    className='flex border border-black w-fit rounded-full px-3  gap-2'
-                    onChange={providedData.handleSelectChange}
-                >
-                    <option value=''>All</option>
-                    <option value='100'>$100</option>
-                    <option value='200'>$200</option>
-                    <option value='500'>$500</option>
-                    <option value='1000'>$1000+</option>
-                </select>
-                <label htmlFor='color' className='font-bold'>
-                    Color
-                </label>
-                <select
-                    name='color'
-                    id='color'
-                    className='flex border border-black w-fit rounded-full px-3  gap-2'
-                    onChange={providedData.handleSelectChange}
-                >
-                    <option value=''>All</option>
-                    <option value='Blue' className='px-3'>
-                        Blue
-                    </option>
-                    <option value='Green' className='px-3'>
-                        Green
-                    </option>
-                    <option value='Red' className='px-3'>
-                        Red
-                    </option>
-                    <option value='Maroon' className='px-3'>
-                        Maroon
-                    </option>
-                    <option value='Yellow' className='px-3'>
-                        Yellow
-                    </option>
-                    <option value='Aquamarine' className='px-3'>
-                        Aquamarine
-                    </option>{" "}
-                    <option value='Turquoise' className='px-3'>
-                        Turquoise
-                    </option>{" "}
-                    <option value='Khaki' className='px-3'>
-                        Khaki
-                    </option>
-                </select>
+                <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
+                    <InputLabel id='demo-simple-select-label'>Type</InputLabel>
+                    <Select
+                        labelId='demo-simple-select-label'
+                        id='demo-simple-select'
+                        label='Type'
+                        value={providedData.filter.type}
+                        onChange={providedData.handleSelectChange}
+                    >
+                        <MenuItem value=' '>All</MenuItem>
+                        <MenuItem value='0'>Over-ear headphones</MenuItem>
+                        <MenuItem value='1'>On-Ear headphones</MenuItem>
+                        <MenuItem value='2'>EarBuds</MenuItem>
+                        <MenuItem value='3'>Wired</MenuItem>
+                    </Select>
+                </FormControl>
+
+                <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
+                    <InputLabel id='demo-simple-select-label'>Price</InputLabel>
+                    <Select
+                        labelId='demo-simple-select-label'
+                        id='demo-simple-select'
+                        label='Price'
+                        value={providedData.filter.price}
+                        onChange={providedData.handleSelectChange}
+                    >
+                        <MenuItem value=' '>All</MenuItem>
+                        <MenuItem value='100'>$100</MenuItem>
+                        <MenuItem value='200'>$200</MenuItem>
+                        <MenuItem value='500'>$500</MenuItem>
+                        <MenuItem value='1000'>$1000+</MenuItem>
+                    </Select>
+                </FormControl>
+
+                <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
+                    <InputLabel id='demo-simple-select-label'>Color</InputLabel>
+                    <Select
+                        labelId='demo-simple-select-label'
+                        id='demo-simple-select'
+                        label='Color'
+                        value={providedData.filter.color}
+                        onChange={providedData.handleSelectChange}
+                    >
+                        <MenuItem value=' '>All</MenuItem>
+                        <MenuItem value='Blue'>Blue</MenuItem>
+                        <MenuItem value='Green'>Green</MenuItem>
+                        <MenuItem value='Red'>Red</MenuItem>
+                        <MenuItem value='Maroon'>Maroon</MenuItem>
+                        <MenuItem value='Yellow'>Yellow</MenuItem>
+                        <MenuItem value='Aquamarine'>Aquamarine</MenuItem>
+                        <MenuItem value='Turquoise'>Turquoise</MenuItem>
+                        <MenuItem value='Khaki'>Khaki</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
-            <div className='flex gap-2'>
-                <label htmlFor='sort' className='font-bold'>
-                    Sort:
-                </label>
-                <select
-                    name='sort'
-                    id='sort'
-                    className='flex font-bold  border border-black w-fit rounded-full gap3 r2 px-2'
-                    onChange={providedData.handleSortChange}
-                >
-                    <option value='0'>price asc</option>
-                    <option value='1'>price dec</option>
-                </select>
+
+            <div className='flex items-center gap-2'>
+                <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
+                    <InputLabel id='demo-simple-select-label'>Sort</InputLabel>
+                    <Select
+                        labelId='demo-simple-select-label'
+                        id='demo-simple-select'
+                        label='Sort'
+                        value={providedData.sort.sortBy}
+                        onChange={providedData.handleSortChange}
+                    >
+                        <MenuItem value=' '>All</MenuItem>
+                        <MenuItem value='0'>price asc</MenuItem>
+                        <MenuItem value='1'>price dec</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
         </div>
     );

@@ -34,12 +34,13 @@ function App() {
     const [recentlyViewed, setRecentlyViewed] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [productLoading, setProductLoading] = useState(true);
+
     // database variables
     const cartCollectionRef = collection(db, "cart");
     const wishCollectionRef = collection(db, "wishlist");
     const productCollectionRef = collection(db, "products");
     const recentlyViewedRef = collection(db, "recentlyviewed");
-    const [productLoading, setProductLoading] = useState(true);
 
     const getProductList = async () => {
         setProductLoading(true);
@@ -53,6 +54,7 @@ function App() {
             setProductLoading(false);
         } catch (err) {
             console.error(err);
+            setProductLoading(false);
         }
     };
     const getCartList = async () => {
@@ -174,6 +176,8 @@ function App() {
                 loading,
                 setLoading,
                 userLoggedIn,
+                filter,
+                sort,
             }}
         >
             <div className='font-Roboto'>
