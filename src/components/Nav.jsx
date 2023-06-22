@@ -3,6 +3,7 @@ import logo from "../assets/logo.png";
 import ReactIcons from "./ReactIconsImport";
 import { Link } from "react-router-dom";
 import { ContextProvider } from "../App";
+import { Avatar } from "@mui/material";
 const Nav = ({ back }) => {
     const providedData = useContext(ContextProvider);
     return (
@@ -28,17 +29,23 @@ const Nav = ({ back }) => {
                         <ReactIcons.AiOutlineSearch className='text-xl' />
                     </div>
                 </div>
-                <div
-                    className='hidden relative md:flex items-center cursor-pointer gap-4'
-                    onClick={providedData.handleCartToggler}
-                >
-                    <div className='relative'>
-                        <ReactIcons.AiOutlineShoppingCart className='text-4xl' />
-                        <div className='absolute inset-y-0 -top-3 -right-3 bg-orange-300 text-center text-lg w-[30px] h-[30px] rounded-full '>
-                            {providedData.cart.length}
+                <div className='flex gap-4 items-center'>
+                    <div
+                        className='hidden relative md:flex items-center cursor-pointer gap-3'
+                        onClick={providedData.handleCartToggler}
+                    >
+                        <div className='relative'>
+                            <ReactIcons.AiOutlineShoppingCart className='text-4xl' />
+                            <div className='absolute inset-y-0 -top-3 -right-3 bg-orange-300 text-center text-lg w-[30px] h-[30px] rounded-full '>
+                                {providedData.cart.length}
+                            </div>
                         </div>
+                        <p>cart</p>
                     </div>
-                    <p>cart</p>
+                    <Avatar
+                        alt={providedData.user}
+                        src='/static/images/avatar/1.jpg'
+                    />
                 </div>
             </div>
 

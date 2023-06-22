@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactIcons from "../ReactIconsImport";
+import { Alert, Snackbar } from "@mui/material";
 
 const SignUpError = ({ signUpErrorMsg, setSignUpErrorMsg }) => {
     const [dispError, setDispError] = useState("");
@@ -31,20 +32,20 @@ const SignUpError = ({ signUpErrorMsg, setSignUpErrorMsg }) => {
     }, []);
 
     return (
-        <div className='flex text-red-700 justify-between items-center gap-5 text-xl inset-x-0 absolute top-10 border w-[90%] sm:w-fit sm:max-w-[800px] mx-auto px-5 py-2 rounded-md bg-white '>
-            <ReactIcons.AiOutlineWarning
-                className='text-xl'
-                style={{ fontSize: "40px" }}
-            />
-            <p>{dispError && dispError}</p>
-
-            <div
-                onClick={() => setSignUpErrorMsg("")}
-                className='cursor-pointer'
+        <Snackbar
+            open={open}
+            autoHideDuration={6000}
+            onClose={() => setSignUpErrorMsg("")}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+            <Alert
+                onClose={() => setSignUpErrorMsg("")}
+                severity='error'
+                sx={{ width: "100%" }}
             >
-                <ReactIcons.AiOutlineClose />
-            </div>
-        </div>
+                {dispError && dispError}
+            </Alert>
+        </Snackbar>
     );
 };
 export default SignUpError;

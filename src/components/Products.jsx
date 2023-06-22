@@ -39,6 +39,7 @@ const Products = () => {
                           .map((item) => (
                               <Card
                                   key={item.id}
+                                  loading={providedData.productLoading}
                                   color={item.color}
                                   id={item.id}
                                   image={item.image}

@@ -1,33 +1,5 @@
-import ReactIcons from "./ReactIconsImport";
+import { Rating } from "@mui/material";
 const RatingComponent = ({ rating }) => {
-    return (
-        <div className='flex'>
-            {rating >= 1 ? (
-                <ReactIcons.AiFillStar className='text-yellow-500' />
-            ) : (
-                <ReactIcons.AiOutlineStar className='bg-white' />
-            )}
-            {rating >= 2 ? (
-                <ReactIcons.AiFillStar className='text-yellow-500' />
-            ) : (
-                <ReactIcons.AiOutlineStar className='bg-white' />
-            )}
-            {rating >= 3 ? (
-                <ReactIcons.AiFillStar className='text-yellow-500' />
-            ) : (
-                <ReactIcons.AiOutlineStar className='bg-white' />
-            )}
-            {rating >= 4 ? (
-                <ReactIcons.AiFillStar className='text-yellow-500' />
-            ) : (
-                <ReactIcons.AiOutlineStar className='bg-white' />
-            )}
-            {rating == 5 ? (
-                <ReactIcons.AiFillStar className='text-yellow-500' />
-            ) : (
-                <ReactIcons.AiOutlineStar className='bg-white' />
-            )}
-        </div>
-    );
+    return <Rating name='read-only' value={rating} readOnly />;
 };
 export default RatingComponent;
