@@ -3,7 +3,18 @@ import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import RatingComponent from "./Ratingcomponent";
-const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
+import { Skeleton } from "@mui/material";
+const Card = ({
+    loading,
+    id,
+    color,
+    image,
+    price,
+    name,
+    reviews,
+    rating,
+    amount,
+}) => {
     const cardDetails = {
         color: color,
         id: id,
@@ -49,8 +60,18 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
             console.error(err);
         }
     };
-
-    return (
+    return loading ? (
+        <div className='relative min-w-[290px] max-w-sm shadow-md pb-2 flex flex-col gap-1'>
+            <Skeleton variant='rectangular' width='100%' height={158} />
+            <div className='flex justify-between'>
+                <Skeleton width='50%' />
+                <Skeleton width='20%' />
+            </div>
+            <Skeleton width='60%' />
+            <Skeleton width='30%' />
+            <Skeleton width='30%' />
+        </div>
+    ) : (
         <div className='relative min-w-[290px] max-w-sm shadow-md pb-2 flex flex-col gap-3'>
             <Link
                 to={`/product/${id}`}
@@ -62,7 +83,7 @@ const Card = ({ id, color, image, price, name, reviews, rating, amount }) => {
                         src={image[0]}
                         alt=''
                         loading='lazy'
-                        className='min-h-[200px]'
+                        className='min-h-[200px] bg-gray-300'
                     />
                 </div>
                 <div className='px-2 flex flex-col gap-1'>

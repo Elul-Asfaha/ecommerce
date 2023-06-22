@@ -2,6 +2,7 @@ import { useContext } from "react";
 import ReactIcons from "./ReactIconsImport";
 import { ContextProvider } from "../App";
 import { Link } from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 const BurgerMenu = () => {
     const providedData = useContext(ContextProvider);
@@ -37,6 +38,11 @@ const BurgerMenu = () => {
                     </Link>
                 </div>
                 <div className='flex items-center justify-between px-5'>
+                    <Avatar
+                        alt={providedData.user}
+                        src='/static/images/avatar/1.jpg'
+                    />
+
                     <div
                         className='w-fit px-4 py-2 border border-black rounded-md cursor-pointer'
                         onClick={providedData.logout}

@@ -25,7 +25,7 @@ import { getDocs, collection } from "firebase/firestore";
 function App() {
     const [user, setUser] = useState();
     const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [store, setStore] = useState(data);
+    const [store, setStore] = useState([]);
     const [cart, setCart] = useState([]);
     const [paginationNumber, setPaginationNumber] = useState(1);
     const [burgerToggle, setBurgerToggle] = useState(false);
@@ -39,8 +39,10 @@ function App() {
     const wishCollectionRef = collection(db, "wishlist");
     const productCollectionRef = collection(db, "products");
     const recentlyViewedRef = collection(db, "recentlyviewed");
+    const [productLoading, setProductLoading] = useState(true);
 
     const getProductList = async () => {
+        setProductLoading(true);
         try {
             const data = await getDocs(productCollectionRef);
             const filteredData = data.docs.map((doc) => ({
@@ -48,6 +50,7 @@ function App() {
                 id: doc.id,
             }));
             setStore(filteredData);
+            setProductLoading(false);
         } catch (err) {
             console.error(err);
         }
@@ -143,6 +146,8 @@ function App() {
     return (
         <ContextProvider.Provider
             value={{
+                productLoading,
+                setProductLoading,
                 handleBurgerToggler,
                 wishlist,
                 setWishlist,

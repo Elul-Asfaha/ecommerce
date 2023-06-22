@@ -13,6 +13,7 @@ const RecentlyViewedProducts = () => {
                     .slice(0, 10)
                     .map((item) => (
                         <Card
+                            loading={providedData.recentLoading}
                             key={item.recentlyViewedId}
                             color={item.color[0]}
                             id={item.id}

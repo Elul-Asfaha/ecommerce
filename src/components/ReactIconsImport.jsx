@@ -1,8 +1,6 @@
 import {
     AiOutlineHeart,
     AiFillHeart,
-    AiOutlineStar,
-    AiFillStar,
     AiOutlineSearch,
     AiOutlineShoppingCart,
     AiOutlineUser,
@@ -23,8 +21,6 @@ import { TiCancel } from "react-icons/ti";
 const ReactIcons = {
     AiOutlineHeart: AiOutlineHeart,
     AiFillHeart: AiFillHeart,
-    AiOutlineStar: AiOutlineStar,
-    AiFillStar: AiFillStar,
     AiOutlineSearch: AiOutlineSearch,
     AiOutlineShoppingCart: AiOutlineShoppingCart,
     AiOutlineUser: AiOutlineUser,

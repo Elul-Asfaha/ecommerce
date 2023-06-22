@@ -77,7 +77,7 @@ const Login = () => {
                     </div>
                 </div>
                 <button
-                    className='flex items-center justify-center outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-1 mt-3'
+                    className='flex items-center justify-center outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-2 mt-3'
                     disabled={providedData.loading}
                 >
                     {providedData.loading ? (
