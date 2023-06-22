@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { ContextProvider } from "../../App";
 import SignUpError from "./SignUpError";
+import { TextField } from "@mui/material";
 
 const SignUp = () => {
     const providedData = useContext(ContextProvider);
@@ -62,112 +63,59 @@ const SignUp = () => {
                 className='grid gap-3 sm :gap-5'
             >
                 <div className='flex flex-col justify-between'>
-                    <label
-                        htmlFor='userFirstName'
-                        className='flex-1 pe-2 sm:pe-5'
-                    >
-                        First Name :
-                    </label>
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='text'
-                            name='userFirstName'
-                            value={first}
-                            onChange={(e) => setFirst(e.target.value)}
-                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
-                            autoComplete='given-name'
-                            required
-                        />
-                    </div>
+                    <TextField
+                        id='outlined-basic'
+                        label='First Name'
+                        variant='outlined'
+                        value={first}
+                        onChange={(e) => setFirst(e.target.value)}
+                    />
+                </div>
+                <div className='flex flex-col min-w-[320px] sm:min-w-[400px] justify-between'>
+                    <TextField
+                        id='outlined-basic'
+                        label='Last Name'
+                        variant='outlined'
+                        value={Last}
+                        onChange={(e) => setLast(e.target.value)}
+                    />
                 </div>
                 <div className='flex flex-col justify-between'>
-                    <label
-                        htmlFor='userLastName'
-                        className='flex-1 pe-2 sm:pe-5'
-                    >
-                        Last Name :
-                    </label>
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='text'
-                            name='userLastName'
-                            value={Last}
-                            onChange={(e) => setLast(e.target.value)}
-                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
-                            autoComplete='family-name'
-                            required
-                        />
-                    </div>
-                </div>
-                <div className='flex flex-col justify-between'>
-                    <label htmlFor='userPhone' className='flex-1 pe-2 sm:pe-5'>
-                        Phone Number :
-                    </label>{" "}
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='text'
-                            name='userPhone'
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
-                            required
-                        />
-                    </div>
+                    <TextField
+                        id='outlined-basic'
+                        label='Phone Number'
+                        variant='outlined'
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                    />
                 </div>
 
                 <div className='flex flex-col justify-between'>
-                    <label htmlFor='userEmail' className='flex-1 pe-2 sm:pe-5'>
-                        Email :
-                    </label>
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='email'
-                            name='userEmail'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
-                            autoComplete='username'
-                            required
-                        />
-                    </div>
+                    <TextField
+                        id='outlined-basic'
+                        label='Email'
+                        variant='outlined'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
                 <div className='flex flex-col justify-between'>
-                    <label
-                        htmlFor='userPassowrd'
-                        className='flex-1 pe-2 sm:pe-5'
-                    >
-                        Password :
-                    </label>
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='password'
-                            name='userPassowrd'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
-                            autoComplete='new-password'
-                            required
-                        />
-                    </div>
+                    <TextField
+                        id='outlined-basic'
+                        label='Password'
+                        variant='outlined'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 <div className='flex flex-col justify-between'>
-                    <label
-                        htmlFor='confirmPassword'
-                        className='flex-1 pe-2 sm:pe-5'
-                    >
-                        Confirm passoword :
-                    </label>
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='password'
-                            name='confirmPassword'
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            className='outline-none py-1 flex-1 text-xl bg-gray-100'
-                            autoComplete='new-password'
-                            required
-                        />
-                    </div>
+                    <TextField
+                        id='outlined-basic'
+                        label='Confirm Password'
+                        variant='outlined'
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
                 </div>
 
                 <button

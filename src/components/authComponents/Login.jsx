@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ContextProvider } from "../../App";
-import ReactIcons from "../ReactIconsImport";
 import SignUpError from "./SignUpError";
+import { TextField } from "@mui/material";
 
 const Login = () => {
     const providedData = useContext(ContextProvider);
@@ -43,38 +43,27 @@ const Login = () => {
                     Welcome back
                 </p>
             </div>
-            <form onSubmit={handleLogin} className='grid gap-5'>
-                <div className='flex flex-col gap-1 justify-between'>
-                    <label htmlFor='userEmail' className='flex-1 pe-5'>
-                        Email :
-                    </label>
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='email'
-                            name='userEmail'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className='outline-none py-1 text-xl flex-1 bg-gray-100'
-                            required
-                        />
-                        <ReactIcons.HiOutlineAtSymbol className='text-2xl' />
-                    </div>
-                </div>
-                <div className='flex flex-col gap-1 justify-between'>
-                    <label htmlFor='userPassword' className='flex-1 pe-5'>
-                        Password :
-                    </label>
-                    <div className='flex min-w-[320px] sm:min-w-[400px] border-2 border-gray-200 bg-gray-100 rounded-md items-center px-3'>
-                        <input
-                            type='password'
-                            name='userPassword'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className='outline-none py-1 text-xl flex-1 bg-gray-100'
-                            required
-                        />
-                        <ReactIcons.HiOutlineLockClosed className='text-2xl' />
-                    </div>
+            <form
+                onSubmit={handleLogin}
+                className='grid gap-5'
+                noValidate
+                autoComplete='off'
+            >
+                <div className='flex flex-col justify-between min-w-[320px] sm:min-w-[400px] gap-5'>
+                    <TextField
+                        id='outlined-basic'
+                        label='Email:'
+                        variant='outlined'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <TextField
+                        id='outlined-basic'
+                        label='Password:'
+                        variant='outlined'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 <button
                     className='flex items-center justify-center outline-none w-full bg-green-600 text-white text-xl rounded-md px-4 py-2 mt-3'

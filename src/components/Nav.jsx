@@ -1,11 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import logo from "../assets/logo.png";
 import ReactIcons from "./ReactIconsImport";
 import { Link } from "react-router-dom";
 import { ContextProvider } from "../App";
-import { Avatar } from "@mui/material";
+import { Avatar, Button, Popover } from "@mui/material";
 const Nav = ({ back }) => {
     const providedData = useContext(ContextProvider);
+
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+        event.preventDefault;
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? "simple-popover" : undefined;
+
     return (
         <div className='capitalize px-[5%] pt-4'>
             {/* desktop view */}
@@ -42,10 +57,35 @@ const Nav = ({ back }) => {
                         </div>
                         <p>cart</p>
                     </div>
-                    <Avatar
-                        alt={providedData.user}
-                        src='/static/images/avatar/1.jpg'
-                    />
+
+                    <div>
+                        <div
+                            onClick={(e) => handleClick(e)}
+                            className='cursor-pointer'
+                        >
+                            <Avatar
+                                alt={providedData.user}
+                                src='/static/images/avatar/1.jpg'
+                            />
+                        </div>
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={(e) => handleClose(e)}
+                            anchorOrigin={{
+                                vertical: "bottom",
+                                horizontal: "left",
+                            }}
+                        >
+                            <Button
+                                variant='outlined'
+                                onClick={providedData.logout}
+                            >
+                                Logout
+                            </Button>
+                        </Popover>
+                    </div>
                 </div>
             </div>
 
