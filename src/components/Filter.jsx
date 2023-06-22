@@ -13,6 +13,7 @@ const Filter = () => {
                         labelId='demo-simple-select-label'
                         id='demo-simple-select'
                         label='Type'
+                        name='type'
                         value={providedData.filter.type}
                         onChange={providedData.handleSelectChange}
                     >
@@ -30,6 +31,7 @@ const Filter = () => {
                         labelId='demo-simple-select-label'
                         id='demo-simple-select'
                         label='Price'
+                        name='price'
                         value={providedData.filter.price}
                         onChange={providedData.handleSelectChange}
                     >
@@ -47,6 +49,7 @@ const Filter = () => {
                         labelId='demo-simple-select-label'
                         id='demo-simple-select'
                         label='Color'
+                        name='color'
                         value={providedData.filter.color}
                         onChange={providedData.handleSelectChange}
                     >
@@ -70,6 +73,7 @@ const Filter = () => {
                         labelId='demo-simple-select-label'
                         id='demo-simple-select'
                         label='Sort'
+                        name='price'
                         value={providedData.sort.sortBy}
                         onChange={providedData.handleSortChange}
                     >
