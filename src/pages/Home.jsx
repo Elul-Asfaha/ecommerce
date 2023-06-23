@@ -7,10 +7,14 @@ import { useContext, useEffect } from "react";
 import { ContextProvider } from "../App";
 import { Products } from "../components";
 const Home = () => {
+    const providedData = useContext(ContextProvider);
     useEffect(() => {
         window.scrollTo(0, 0);
+        providedData.getProductList();
+        providedData.getCartList();
+        providedData.getWishList();
+        providedData.getRecentlyViewedList();
     }, []);
-    const providedData = useContext(ContextProvider);
     return (
         <div className=''>
             <MinBanner />

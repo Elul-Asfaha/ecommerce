@@ -52,15 +52,18 @@ const Login = () => {
                 <div className='flex flex-col justify-between min-w-[320px] sm:min-w-[400px] gap-5'>
                     <TextField
                         id='outlined-basic'
-                        label='Email:'
+                        label='Email'
+                        type='email'
                         variant='outlined'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+
                     <TextField
                         id='outlined-basic'
                         label='Password:'
                         variant='outlined'
+                        type='password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
