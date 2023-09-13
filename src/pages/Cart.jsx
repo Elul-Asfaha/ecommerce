@@ -26,10 +26,15 @@ const Cart = () => {
             >
                 <div className='relative flex bg-gray-400'>
                     <img
-                        src={items.image[0]}
-                        alt=''
+                        src={
+                            items.image[0] &&
+                            `https://source.unsplash.com/1700x${
+                                Math.random() * (1080 - 700) + 700
+                            }?headphone`
+                        }
                         loading='lazy'
                         className='bg-gray-300 cover min-w-[320px] sm:w-full max-w-[350px] min-h-[209px]'
+                        alt=''
                     />
                 </div>
                 <div className='flex md:flex-1 flex-col text-2xl'>

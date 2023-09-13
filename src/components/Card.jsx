@@ -80,10 +80,15 @@ const Card = ({
             >
                 <div className='rounded-t-lg overflow-hidden bg-gray-300'>
                     <img
-                        src={image[0]}
-                        alt=''
+                        src={
+                            image[0] &&
+                            `https://source.unsplash.com/1700x${
+                                Math.random() * (1080 - 700) + 700
+                            }?headphone`
+                        }
                         loading='lazy'
                         className='min-h-[200px] bg-gray-300'
+                        alt=''
                     />
                 </div>
                 <div className='px-2 flex flex-col gap-1'>
