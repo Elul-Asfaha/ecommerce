@@ -14,10 +14,15 @@ const CartModal = () => {
         >
             <div className='flex h-[100px]'>
                 <img
-                    src={items.image[0]}
-                    alt=''
+                    src={
+                        items.image[0] &&
+                        `https://source.unsplash.com/1700x${
+                            Math.random() * (1080 - 700) + 700
+                        }?headphone`
+                    }
                     loading='lazy'
                     className='cover rounded-lg'
+                    alt=''
                 />
             </div>
             <div className='flex flex-col text-2xl'>
